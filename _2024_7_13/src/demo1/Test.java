@@ -14,10 +14,11 @@ public class Test {
         tree.createTree();
         tree.preOrder(tree.root);
         System.out.println();
-        tree.inOrder(tree.root);
-        System.out.println();
-        tree.postOrder(tree.root);
-        System.out.println();
+//        tree.inOrder(tree.root);
+//        System.out.println();
+//        tree.postOrder(tree.root);
+//        System.out.println();
+        tree.levelOrder(tree.root);
     }
     public static void main3(String[] args) {
         MyCircularQueue m=new MyCircularQueue(3);

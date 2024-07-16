@@ -1,7 +1,9 @@
 package demo1;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @auther falls_vc
@@ -131,5 +133,50 @@ public class MyTree {
             return ret2;
         }
         return null;
+    }
+    //层序遍历
+    public void levelOrder(TreeNode r) {
+        if(r==null){
+            return;
+        }
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(r);
+        while (!q.isEmpty()){
+            TreeNode c=q.poll();
+            System.out.print(c.val+" ");
+            if(c.left!=null){
+                q.offer(c.left);
+            }
+            if(c.right!=null){
+                q.offer(c.right);
+            }
+        }
+    }
+
+
+    // 判断一棵树是不是完全二叉树
+    public static boolean isCompleteTree(TreeNode r) {
+        if(r==null) return false;
+        Queue<TreeNode> q=new LinkedList<>();
+        q.offer(r);
+        while(!q.isEmpty()){
+            TreeNode c=q.poll();
+            if(c==null){
+                break;
+            }else{
+                if(c.left!=null){
+                    q.offer(c.left);
+                }
+                if(c.right!=null){
+                    q.offer(c.right);
+                }
+            }
+        }
+        while(!q.isEmpty()){
+            TreeNode c=q.poll();
+            if(c!=null) return false;
+        }
+
+        return true;
     }
 }
