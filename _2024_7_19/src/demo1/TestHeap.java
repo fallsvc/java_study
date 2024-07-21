@@ -31,9 +31,11 @@ public class TestHeap {
     }
 
     public void swap(int parent,int child){
+
         int tmp=elem[child];
         elem[child]=elem[parent];
         elem[parent]=tmp;
+
     }
     public void shiftDown(int parent,int usedSize){
         int child=parent*2+1;//第一个子节点
