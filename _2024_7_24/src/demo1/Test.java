@@ -30,8 +30,6 @@ class Student{
     }
 }
 public class Test {
-
-
     //字典中单词出现次数
     public static Map<String,Integer> countWord(String[] words){
         Map<String,Integer> map=new HashMap<>();
@@ -46,6 +44,11 @@ public class Test {
         return map;
     }
 
+    public static void main(String[] args) {
+
+        HashBuck2<String,Integer> hashBuck2=new HashBuck2<>();
+        hashBuck2.push("q",null);
+    }
     public static void main4(String[] args) {
         String[] words={"hqhq","hll","haha","hqhq","hqhq","hll","gg"};
         Map<String,Integer> map=countWord(words);
@@ -54,6 +57,7 @@ public class Test {
         for (Map.Entry<String,Integer> entry:set) {
             System.out.println("key:"+entry.getKey()+"  value:"+entry.getValue());
         }
+
         Iterator<Map.Entry<String,Integer>> iterator=set.iterator();
         while(iterator.hasNext()){
             Map.Entry<String,Integer> tmp=iterator.next();

@@ -63,13 +63,15 @@ public class Test {
     }
     //坏键盘打字
     public static void func(String s1,String s2){
+        //转换为大写
         s1=s1.toUpperCase();
         s2=s2.toUpperCase();
+        //记录能打出字符
         HashSet<Character> hashSet=new HashSet<>();
         for (int i = 0; i < s2.length(); i++) {
             hashSet.add(s2.charAt(i));
         }
-        HashSet<Character> hashSet1=new HashSet<>();
+        HashSet<Character> hashSet1=new HashSet<>();//记录已经打印的坏键
         for (int i = 0; i < s1.length(); i++) {
             char ch=s1.charAt(i);
             if(!hashSet.contains(ch)&&!hashSet1.contains(ch)){
@@ -106,12 +108,14 @@ public class Test {
         if(head==null) return head;
         Map<Node,Node> map=new HashMap<>();
         Node cur=head;
+        //映射 对应节点 赋值val
         while(cur!=null){
             Node node=new Node(cur.val);
             map.put(cur,node);
             cur=cur.next;
         }
         cur=head;
+        //根据映射关系 赋值拷贝链表的next random
         while(cur!=null){
             map.get(cur).next=map.get(cur.next);
             map.get(cur).random=map.get(cur.random);
