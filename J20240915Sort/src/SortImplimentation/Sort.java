@@ -178,7 +178,7 @@ public class Sort {
             stack.push(pivot+1);
             stack.push(end);
         }
-        while(stack.isEmpty()){
+        while(!stack.isEmpty()){
             end=stack.pop();
             start=stack.pop();
             pivot=partition2(array,start,end);
@@ -196,7 +196,7 @@ public class Sort {
 
     private static void quick(int[] array, int start,int end) {
 
-        if(start>end) return;
+        if(start>=end) return;
         //小于10的用直接插入排序//减小递归次数
         if(end-start+1<=10){
             insertSortRange(array,start,end);
@@ -303,6 +303,99 @@ public class Sort {
         }
         swap(array,prev,left);
         return prev;
+    }
+    //归并排序
+    public static void mergeSort(int[] array){
+        mergeSortTmp(array,0,array.length-1);
+    }
+
+    private static void mergeSortTmp(int[] array, int left, int right) {
+        if(left>=right){
+            return;
+        }
+        int middleIndex=(left+right)/2;
+        mergeSortTmp(array,left,middleIndex);
+        mergeSortTmp(array,middleIndex+1,right);
+        //已经拆分好 现在进行排序
+        merge(array,left,middleIndex,right);
+
+
+    }
+
+    private static void merge(int[] array, int left,int mid, int right) {
+        int s1=left;
+        int s2=mid+1;
+        int[] count=new int[right-left+1];
+        int k=0;
+        //从小到大放入count数组
+        while(s1<=mid&&s2<=right){
+            if(array[s1]<=array[s2]){
+                count[k++]=array[s1++];
+            }else{
+                count[k++]=array[s2++];
+            }
+        }
+
+        while(s1<=mid){
+            count[k++]=array[s1++];
+        }
+        while(s2<=right){
+            count[k++]=array[s2++];
+        }
+        //放回原数组 k为数组元素个数
+        s1=left;
+        for (int i = 0; i < k; i++) {
+            array[s1++]=count[i];
+        }
+    }
+    //非递归的归并排序
+    public static void mergeSortNor(int[] array){
+        int gap=1;
+        while(gap<array.length){
+            for (int i = 0; i < array.length; i+=gap*2) {
+                int left=i;
+                int mid=left+gap-1;
+                if(mid>=array.length){
+                    mid=array.length-1;
+                }
+                int right=mid+gap;
+                if(right>=array.length){
+                    right=array.length-1;
+                }
+                merge(array,left,mid,right);
+            }
+            gap*=2;
+        }
+    }
+    //不基于比较的排序
+    //计数数组排序
+    //基数排序
+    //桶排序  分桶排，每桶顺序整齐
+    public static void countSort(int[] array){
+        int min=array[0];
+        int max=array[0];
+        for (int i = 1; i < array.length; i++) {
+            if(array[i]<min){
+                min=array[i];
+            }
+            if(array[i]>max){
+                max=array[i];
+            }
+        }
+        //找到范围创建计数数组
+        int[] count=new int[max-min+1];
+        for (int i = 0; i < array.length; i++) {
+            int index=array[i]-min;
+            count[index]++;
+        }
+        //放回排序
+        int k=0;
+        for (int i = 0; i < count.length; i++) {
+            for (int j = 0; j < count[i]; j++) {
+                array[k++]=i+min;
+            }
+        }
+
     }
 
 }
