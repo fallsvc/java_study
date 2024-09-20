@@ -19,9 +19,9 @@ public class Test {
 //        Sort.selectFasterSort(array);
 //        Sort.heapSort(array);
 //        Sort.quickSort(array);
-//        Sort.mergeSort(array);
+        Sort.mergeSort(array);
 //        Sort.mergeSortNor(array);
-        Sort.countSort(array);
+//        Sort.countSort(array);
         System.out.println(Arrays.toString(array));
     }
 }
