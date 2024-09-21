@@ -1,0 +1,170 @@
+package rbtree;
+
+
+import static rbtree.COLOR.*;
+
+/**
+ * @auther falls_vc
+ * description:
+ * @date 2024/9/21  19:40
+ */
+public class RBTree {
+    static class RBTreeNode{
+        public int val;
+        public COLOR color;
+        public RBTreeNode left;
+        public RBTreeNode right;
+        public RBTreeNode parent;
+        public RBTreeNode(int val){
+            this.val=val;
+            this.color= red;
+        }
+
+    }
+    public RBTreeNode root;
+    public boolean insert(int val){
+        RBTreeNode node=new RBTreeNode(val);
+        //第一个节点为黑色
+        if(root==null){
+            root=node;
+            node.color=COLOR.black;
+            return true;
+        }
+        //判断插入节点位置
+        RBTreeNode parent=null;
+        RBTreeNode cur=root;
+        while(cur!=null){
+            if(cur.val>val){
+                parent=cur;
+                cur=cur.left;
+            }else if(cur.val==val){
+                return false;
+            }else{
+                parent=cur;
+                cur=cur.right;
+            }
+        }
+
+        if(parent.val>val){
+            parent.left=node;
+        }else{
+            parent.right=node;
+        }
+        //
+        node.parent=parent;
+        cur=node;
+        //调整颜色
+        while(parent!=null&&parent.color==red){
+            RBTreeNode grandFather=parent.parent;//不可能为空
+            if(grandFather.left==parent){
+                RBTreeNode uncle=grandFather.right;
+                if(uncle!=null&&uncle.color==red){
+                    //情况一
+                    parent.color=black;
+                    uncle.color=black;
+                    grandFather.color=red;
+                    //向上遍历
+                    cur=grandFather;
+                    parent=grandFather.parent;
+                }else{
+                    //uncle为null或者黑色
+
+                    //情况三cur在parent右边
+                    if(parent.right==cur){
+                        //左旋parent到情况二
+                        leftRotate(parent);
+                    }
+
+                    //情况二
+                    rightRotate(grandFather);
+                    cur.color=red;
+                    grandFather.color=red;
+                    parent.color=black;
+                }
+            }else{
+                //反转后
+                RBTreeNode uncle=grandFather.left;
+                if(uncle!=null&&uncle.color==red){
+                    //情况一
+                    parent.color=black;
+                    uncle.color=black;
+                    grandFather.color=red;
+                    //向上遍历
+                    cur=grandFather;
+                    parent=grandFather.parent;
+                }else{
+                    //uncle为null或者黑色
+
+                    //情况三cur在parent右边
+                    if(parent.right==cur){
+                        //右旋parent到情况二
+                    }
+
+                    //情况二
+                    leftRotate(grandFather);
+                    cur.color=red;
+                    grandFather.color=red;
+                    parent.color=black;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private void leftRotate(RBTreeNode parent) {
+        RBTreeNode subL=parent.right;
+        RBTreeNode subLR=subL.left;
+
+        parent.right=subLR;
+
+        subL.left=parent;
+        if(subLR!=null){
+            subL.parent=parent;
+        }
+        RBTreeNode pParent=parent.parent;
+        parent.parent=subL;
+
+        if(root==parent){
+            root=subL;
+            root.parent=null;
+        }else{
+            if(pParent.left==parent){
+                pParent.left=subL;
+            }else{
+                pParent.right=subL;
+            }
+            subL.parent=pParent;
+        }
+    }
+
+    private void rightRotate(RBTreeNode parent) {
+        RBTreeNode subL=parent.left;
+        RBTreeNode subLR=subL.right;
+
+        parent.left=subLR;
+        //
+        if(subLR!=null){
+            subLR.parent=parent;
+        }
+
+        subL.right=parent;
+        //
+        RBTreeNode pParent=parent.parent;
+        parent.parent=subL;
+
+        //
+        if(root==parent){
+            root=subL;
+            subL.parent=null;
+        }else{
+            if(pParent.left==parent){
+                pParent.left=subL;
+            }else{
+                pParent.right=subL;
+            }
+            subL.parent=pParent;
+        }
+
+    }
+}
