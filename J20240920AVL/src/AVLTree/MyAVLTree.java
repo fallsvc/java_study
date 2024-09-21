@@ -1,13 +1,11 @@
 package AVLTree;
 
-import com.sun.source.tree.Tree;
-
 /**
  * @auther falls_vc
  * description:
  * @date 2024/9/20  10:46
  */
-public class AVLTree {
+public class MyAVLTree {
     static class TreeNode{
         public int val;
         public int bf;//平衡因子
@@ -50,7 +48,8 @@ public class AVLTree {
 
         //调节平衡因子
         cur=node;
-        while(true){
+        while(parent!=null){
+            //平衡因子
             if(cur==parent.right){
                 parent.bf++;
             }else{
@@ -82,6 +81,7 @@ public class AVLTree {
                         rotateRight(parent);
                     }
                 }
+                break;
             }
 
 
@@ -89,36 +89,40 @@ public class AVLTree {
         return false;
     }
 
-    private void rotateRL(AVLTree.AVLTree.TreeNode parent) {
+    private void rotateRL(TreeNode parent) {
         TreeNode subL=parent.right;
         TreeNode subLR=subL.left;
+        //旋转后subLR的bf会被修改成0
+        int bf=subLR.bf;
 
         rotateRight(subL);
         rotateLeft(parent);
 
-        if(subLR.bf==1){
+        if(bf==1){
             subL.bf=0;
             subLR.bf=0;
             parent.bf=-1;
-        }else{
+        }else if(bf==-1){
             subL.bf=1;
             subLR.bf=0;
             parent.bf=0;
         }
+        //bf=0时如三个节点bf已经全修改为0了
     }
 
-    private void rotateLR(AVLTree.AVLTree.TreeNode parent) {
+    private void rotateLR(TreeNode parent) {
         TreeNode subL=parent.left;
         TreeNode subLR=subL.right;
+        int bf=subLR.bf;
 
         rotateLeft(subL);
         rotateRight(parent);
 
-        if(subLR.bf==1){
+        if(bf==1){
             subL.bf=-1;
             subLR.bf=0;
             parent.bf=0 ;
-        }else{
+        }else if(bf==-1){
             subL.bf=0;
             subLR.bf=0;
             parent.bf=1;
@@ -181,5 +185,35 @@ public class AVLTree {
         subR.bf=0;
         parent.bf=0;
 
+    }
+    //中序遍历 判断是不是二叉树
+    public void inOrder(TreeNode root){
+        if(root==null) return;
+        inOrder(root.left);
+        System.out.print(root.val+" ");
+        inOrder(root.right);
+
+    }
+    //
+    public boolean isBalance(TreeNode root){
+        if(root==null) return true;
+
+        int leftH=getHeight(root.left);
+        int rightH=getHeight(root.right);
+
+        if(rightH-leftH!=root.bf){
+            System.out.println("平衡因子异常");
+            return false;
+        }
+
+        return Math.abs(rightH-leftH)<2&&isBalance(root.left)&&isBalance(root.right);
+    }
+
+    private int getHeight(TreeNode root) {
+        if(root==null) return 0;
+        int leftH=getHeight(root.left);
+        int rightH=getHeight(root.right);
+
+        return leftH>rightH?leftH+1:rightH+1;
     }
 }
