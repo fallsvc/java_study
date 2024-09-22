@@ -10,7 +10,7 @@ public class Test {
         MyAVLTree myAvlTree =new MyAVLTree();
 //        int[] arr={16, 3, 7, 11, 9, 26, 18, 14, 15};
 
-        int[] arr={4, 2, 6, 1, 3, 5, 15, 7, 16,14};
+        int[] arr={30,20,90,60,180,40};
         for (int i = 0; i < arr.length; i++) {
             myAvlTree.insert(arr[i]);
         }

@@ -167,4 +167,51 @@ public class RBTree {
         }
 
     }
+    //判断是不是红黑树
+    public boolean isRBTree(RBTreeNode root){
+        if(root==null) return true;
+        //根节点为黑色
+        if(root.color!=black){
+            return false;
+        }
+        //红黑树黑色节点个数
+        RBTreeNode cur=root;
+        int count=0;
+        while (cur!=null){
+            if(cur.color==black){
+                count++;
+            }
+            cur=cur.left;
+        }
+        //是否有两个连续的红色节点//路径上黑色个数
+        return checkRedColor(root)&&checkBlackNum(root,0,count);
+    }
+
+    private boolean checkBlackNum(RBTreeNode root, int pathBlackNum, int blackNum) {
+        if(root==null) return true;
+        if(root.color==black){
+            pathBlackNum++;
+        }
+        if(root.left==null&&root.right==null){
+            if(pathBlackNum!=blackNum){
+                System.out.println("路径上黑色节点个数不同");
+                return false;
+            }
+        }
+
+        return checkBlackNum(root.left,pathBlackNum,blackNum)&&checkBlackNum(root.right,pathBlackNum,blackNum);
+    }
+
+
+    private boolean checkRedColor(RBTreeNode root) {
+        if(root==null) return true;
+        if(root.color==red){
+            RBTreeNode parent=root.parent;
+            if(parent!=null&&parent.color==red){
+                System.out.println("有两个连续的红色节点");
+                return false;
+            }
+        }
+        return checkRedColor(root.left)&&checkRedColor(root.right);
+    }
 }
