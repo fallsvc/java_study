@@ -77,7 +77,6 @@ public class RBTree {
 
                     //情况二
                     rightRotate(grandFather);
-                    cur.color=red;
                     grandFather.color=red;
                     parent.color=black;
                 }
@@ -102,13 +101,12 @@ public class RBTree {
 
                     //情况二
                     leftRotate(grandFather);
-                    cur.color=red;
                     grandFather.color=red;
                     parent.color=black;
                 }
             }
         }
-
+        root.color=black;
         return true;
     }
 
@@ -203,6 +201,7 @@ public class RBTree {
     }
 
 
+
     private boolean checkRedColor(RBTreeNode root) {
         if(root==null) return true;
         if(root.color==red){
@@ -213,5 +212,13 @@ public class RBTree {
             }
         }
         return checkRedColor(root.left)&&checkRedColor(root.right);
+    }
+    //中序遍历
+    public void inOrder(RBTreeNode root){
+        if(root==null) return ;
+
+        inOrder(root.left);
+        System.out.print(root.val+" ");
+        inOrder(root.right);
     }
 }

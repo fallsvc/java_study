@@ -12,7 +12,11 @@ public class Test {
         rbTree.insert(2);
         rbTree.insert(4);
         rbTree.insert(1);
+        rbTree.insert(6);
+        rbTree.insert(7);
+        rbTree.insert(69);
+        rbTree.insert(9);
 
-
+        rbTree.inOrder(rbTree.root);
     }
 }
