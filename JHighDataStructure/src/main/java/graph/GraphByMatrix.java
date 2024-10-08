@@ -254,4 +254,222 @@ public class GraphByMatrix {
         System.out.println(g.kruskal(kminTree));
         kminTree.printGraph();
     }
+
+    // Prime 普利姆算法 局部贪心
+    // 天然没有环  一个集合到另一个集合
+
+    /**
+     *
+     * @param minTree 最小生成树
+     * @param chV 起点
+     * @return
+     */
+    public int prime(GraphByMatrix minTree,char chV){
+        int indexV=getIndexOfV(chV);// 获取顶点下标
+        
+        Set<Integer> setSrc=new HashSet<>();// 放入起点
+        setSrc.add(indexV);
+        // 放入终点下标
+        Set<Integer> setDest=new HashSet<>();
+        for (int i = 0; i < array.length; i++) {
+            if(i!=chV){
+                setDest.add(i);
+            }
+        }
+        // 建立小根堆
+        Queue<Edge> queue=new PriorityQueue<>(new Comparator<Edge>() {
+            @Override
+            public int compare(Edge o1, Edge o2) {
+                return o1.weight-o2.weight;
+            }
+        });
+        // 放入起点到终点的边
+        for (int i = 0; i < matrix[indexV].length; i++) {
+            if(matrix[indexV][i]!=Constant.MAX){
+                queue.add(new Edge(indexV,i,matrix[indexV][i]));
+            }
+        }
+
+        int totalWeight=0;
+        int edgeCount=0;
+        while(!queue.isEmpty()){
+            Edge edge=queue.poll();
+            int srcIndex=edge.src;
+            int destIndex=edge.dest;
+            int weight=edge.weight;
+            if(setSrc.contains(destIndex)){
+                // 成环
+            }else{
+                minTree.addEdge(array[srcIndex],array[destIndex],weight);// 加入边
+                System.out.println(array[srcIndex]+"->"+array[destIndex]+"="+weight);
+                totalWeight+=weight;
+                edgeCount++;
+                if(edgeCount==array.length-1) return totalWeight;
+                // 更新集合
+                setSrc.add(destIndex);
+                setDest.remove(destIndex);
+                // 加入边
+                for (int i = 0; i < matrix[destIndex].length; i++) {
+                    if(!setSrc.contains(i)&&matrix[destIndex][i]!=Constant.MAX){
+                        queue.add(new Edge(destIndex,i,matrix[destIndex][i]));
+                    }
+                }
+            }
+        }
+        return -1;
+    }
+    /**
+     * 迪杰斯特拉算法
+     * @param vSrc 指定起点
+     * @param dist 路径最小权值
+     * @param pPath 路径
+     */
+   public void dijkstra(char vSrc,int[] dist,int[] pPath){
+        int srcIndex=getIndexOfV(vSrc);
+        // 距离数组初始化
+       Arrays.fill(dist,Constant.MAX);
+       dist[srcIndex]=0;
+       // 路径数组初始化
+       Arrays.fill(pPath,-1);
+       pPath[srcIndex]=srcIndex;
+       // 当前节点是否被访问
+       int n=array.length;
+       boolean[] s=new boolean[n];
+
+       // n个顶点，更新n次 从0下标开始找最小
+       for (int k = 0; k<n ; k++) {
+           int min=Constant.MAX;
+           int u=srcIndex;
+           for (int i = 0; i < n; i++) {
+               if(s[i]==false && dist[i]<min){
+                   min=dist[i];
+                   u=i;// 更新下标
+               }
+           }
+           s[u]=true;
+           // 松弛u连接出去的所有节点
+           for (int v = 0; v < n; v++) {
+               if(s[v]==false&&matrix[u][v]!=Constant.MAX
+               && dist[u]+matrix[u][v]<dist[v]){
+                    dist[v]=dist[u]+matrix[u][v];
+                    pPath[v]=u;// 更新当前路径
+               }
+           }
+       }
+   }
+    public void printShortPath(char srcV,int[] dist,int[] pPath){
+       // 获取下标
+       int srcIndex=getIndexOfV(srcV);
+       int n=array.length;
+
+       // 遍历pPath每一个值
+        for (int i = 0; i < n; i++) {
+            if(i!=srcIndex){
+                ArrayList<Integer> arrayList=new ArrayList<>();
+                int parent=i;
+                // 倒序添加路径
+                while(parent!=srcIndex){
+                    arrayList.add(parent);
+                    parent=pPath[parent];
+                }
+                arrayList.add(srcIndex);
+
+                Collections.reverse(arrayList);
+
+                for (int x:arrayList) {
+                    System.out.print(array[x]+"->");
+                }
+                System.out.println(dist[i]);
+            }
+
+        }
+    }
+
+    /***
+     * 贝尔福德曼算法  暴力遍历算法
+     * @param vSrc
+     * @param dist
+     * @param pPath
+     * @return
+     */
+    public boolean bellmanFord(char vSrc,int[] dist,int[] pPath) {
+        //1. 获取顶点下标 
+        int srcIndex = getIndexOfV(vSrc); 
+        //2、初始化父顶点数组下标为-1
+         Arrays.fill(pPath,-1); 
+        // 3、初始化dist数组
+         Arrays.fill(dist,Integer.MAX_VALUE); 
+        // 4、对起点进行初始化,给一个最小值 方便第一次就能找到最小值
+        dist[srcIndex] = 0;
+        int n = array.length;
+        
+        // 暴力遍历
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if(matrix[i][j]!=Constant.MAX&&
+                        dist[i]+matrix[i][j]<dist[j]){
+                        dist[j]=dist[i]+matrix[i][j];
+                        pPath[j]=i;
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] != Constant.MAX &&
+                        dist[i] + matrix[i][j] < dist[j]) {
+                    // 存在回路
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    /**
+     * 弗洛伊德算法
+     * @param dist
+     * @param pPath
+     */
+    public void floydWarShall(int[][] dist,int[][] pPath) {
+        int n=array.length;
+
+        // 初始化两个数组
+        for (int i = 0; i < n; i++) {
+            Arrays.fill(dist[i],Constant.MAX);
+            Arrays.fill(pPath[i],-1);
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] != Constant.MAX) {
+                    dist[i][j] = matrix[i][j];
+                    pPath[i][j] = i;
+                } else {
+                    pPath[i][j] = -1;// 不存在直接相连
+                }
+
+                if (i == j) {
+                    dist[i][j]=0;
+                    pPath[i][j]=-1;
+
+                }
+            }
+        }
+        // 以每个节点为中转点进行选择路径
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if(dist[i][k]!=Constant.MAX&&dist[k][j]!=Constant.MAX
+                    &&dist[i][k]+dist[k][j]<dist[i][j]){
+                        dist[i][j]=dist[i][k]+dist[k][j];
+                        pPath[i][j]=pPath[k][j];
+                    }
+                }
+            }
+        }
+
+    }
 }
