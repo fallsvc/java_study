@@ -16,11 +16,20 @@
     </properties>
 
     <dependencies>
+        <!-- 连接mysql -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.33</version>
             </dependency>
+
+        <!-- 布隆过滤器 -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
