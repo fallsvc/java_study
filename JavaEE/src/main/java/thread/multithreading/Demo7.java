@@ -24,7 +24,7 @@ public class Demo7 {
 //        t.join();// t结束才往下执行
         t.join(3000);// 停3000ms
         try {
-            Thread.sleep(3000);
+            Thread.sleep(0);// 可以释放cpu资源
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

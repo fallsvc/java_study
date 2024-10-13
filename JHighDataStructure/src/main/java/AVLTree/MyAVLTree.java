@@ -26,6 +26,7 @@ public class MyAVLTree {
             root=node;
             return true;
         }
+
         TreeNode parent=null;
         TreeNode cur=root;
         while(cur!=null){
