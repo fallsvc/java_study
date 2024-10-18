@@ -9,6 +9,7 @@ import java.util.Vector;
  */
 public class Demo2 {
 
+
     // 死锁的特点
     // 1. 互斥
     // 2. 不可剥夺
