@@ -6,7 +6,32 @@ package bite.problems.threads;
  * @date 2024/10/19  16:59
  */
 public class Demo4 {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
+        Thread thread1=new Thread(()->{
+            System.out.print(Thread.currentThread().getName());
+        },"c");
+        Thread thread2=new Thread(()->{
+            try {
+                thread1.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.print(Thread.currentThread().getName());
+        },"a");
+        Thread thread3=new Thread(()->{
+            try {
+                thread2.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(Thread.currentThread().getName());
+        },"b");
+
+        thread1.start();
+        thread2.start();
+        thread3.start();
+    }
+    public static void main2(String[] args) throws InterruptedException {
         Object locker1=new Object();
         Object locker2=new Object();
         Object locker3=new Object();

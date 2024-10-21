@@ -5,6 +5,10 @@ package bite.problems.threads;
  * description:
  * @date 2024/10/20  11:27
  */
+
+/**
+ * 嵌套死锁
+ */
 public class Demo5 {
     public static void main(String[] args) {
         Object locker1=new Object();
