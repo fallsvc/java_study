@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 public class Demo1 {
     public static void main(String[] args) {
-        ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor(args);
+//        ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor();
     }
     public static void main1(String[] args) {
         ExecutorService executorService1=Executors.newCachedThreadPool();
