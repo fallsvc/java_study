@@ -10,10 +10,10 @@ import java.util.concurrent.ThreadPoolExecutor;
  * @date 2024/10/20  16:24
  */
 public class Demo1 {
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
 //        ThreadPoolExecutor threadPoolExecutor=new ThreadPoolExecutor();
     }
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
         ExecutorService executorService1=Executors.newCachedThreadPool();
         ExecutorService executorService2=Executors.newFixedThreadPool(4);// 固定线程数
 
@@ -24,5 +24,9 @@ public class Demo1 {
             });
         }
 
+        // 无法保证一定能执行完
+        executorService2.shutdown();
+        // 等待什么时候完成
+//        executorService2.awaitTermination();
     }
 }
