@@ -22,7 +22,7 @@ public class Demo1 {
      * 文本文件 or 二进制文件
      * @param args
      */
-    public static void main1(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
 //        File file=new File("C:/Users/12092/Desktop/test.txt");
         File file=new File("./test.txt");
         System.out.println(file.getParent());// 构造时的父路径
@@ -70,7 +70,7 @@ public class Demo1 {
 //        file.mkdirs();// 多级目录
     }
 
-    public static void main(String[] args) {
+    public static void main6(String[] args) {
         File file=new File("./test.txt");
         File file1=new File("./src/test.txt");
 //        file.renameTo(file1);

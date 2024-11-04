@@ -1,7 +1,6 @@
 package file.bytestream;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -10,7 +9,7 @@ import java.io.InputStream;
  * description:
  * @date 2024/11/1  20:21
  */
-public class Demo1 {
+public class Demo1inputstream {
     public static void main(String[] args) throws IOException {
 //        InputStream inputStream=null;
 //       try{
