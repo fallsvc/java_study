@@ -40,6 +40,7 @@ public class Demo1inputstream {
                     // 读完
                     break;
                 }
+                
                 for (int i=0;i<n;i++) {
                     System.out.printf("%x\n",data[i]);
                 }

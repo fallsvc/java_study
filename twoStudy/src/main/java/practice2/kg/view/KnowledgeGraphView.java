@@ -13,6 +13,8 @@ import javafx.scene.text.Text;
 import practice2.kg.core.Entity;
 import practice2.kg.core.KnowledgeGraph;
 import practice2.kg.core.Relationship;
+import practice2.kg.editor.Editor;
+import practice2.kg.editor.RelationshipEditor;
 
 public class KnowledgeGraphView extends Pane{
   private KnowledgeGraph graph; // 每个图谱视图对应一个图谱对象
@@ -178,7 +180,10 @@ public class KnowledgeGraphView extends Pane{
       this.getChildren().addAll(line, label);
       this.setOnMouseClicked(event -> {
         if (event.getClickCount() == 2) {
-          new RelationshipDialog(relation).showAndWait().ifPresent(update -> {
+          Editor<Relationship> ed=new RelationshipEditor();// 创建关系编辑对象
+          ed.setTarget(relation);
+
+          new EditorDialog<Relationship>(ed).showAndWait().ifPresent(update -> {
             this.updateText(); // 更新线标签
           });
         }
