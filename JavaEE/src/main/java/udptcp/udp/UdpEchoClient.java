@@ -44,7 +44,10 @@ public class UdpEchoClient {
     }
 
     public static void main(String[] args) throws IOException {
+        // 127.0.0.1
         UdpEchoClient udpEchoClient=new UdpEchoClient("127.0.0.1",9090);
         udpEchoClient.start();
     }
+
+
 }

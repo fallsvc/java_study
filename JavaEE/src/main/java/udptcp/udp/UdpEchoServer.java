@@ -45,7 +45,8 @@ public class UdpEchoServer {
         }
     }
 
-    private String process(String request) {
+    // private 不能被重写
+    public String process(String request) {
         return request;
     }
 
