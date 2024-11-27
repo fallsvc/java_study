@@ -28,12 +28,12 @@ class SingletonLazy{
      * 锁对象为 SingletonLazy.class
      * @return
      */
-    public synchronized static SingletonLazy getInstance2() {
-        if(instance==null){
-            instance=new SingletonLazy();
-        }
-        return instance;
-    }
+//    public synchronized static SingletonLazy getInstance2() {
+//        if(instance==null){
+//            instance=new SingletonLazy();
+//        }
+//        return instance;
+//    }
     private SingletonLazy(){
 
     }
