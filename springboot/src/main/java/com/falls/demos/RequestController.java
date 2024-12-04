@@ -1,9 +1,10 @@
 package com.falls.demos;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -50,4 +51,25 @@ public class RequestController {
     public String r6(@RequestParam List<Integer> list){
         return list.toString();
     }
+
+    @RequestMapping("/r7")
+    public String r7(@RequestBody UserInfo userInfo){
+        System.out.println(userInfo);
+        return userInfo.toString();
+    }
+
+    @RequestMapping("/r8/{type}/{article}")
+    public String r8(@PathVariable Integer article,@PathVariable String type){
+        return "articleID"+article+",type:"+type;
+    }
+
+    @RequestMapping("/r9")
+    public String r9(@RequestPart("file")MultipartFile file1) throws IOException {
+        System.out.println(file1.getOriginalFilename());
+        // 文件上传
+        file1.transferTo(new File("C:\\Users\\12092\\Desktop\\software\\"+file1.getOriginalFilename()));
+
+        return "文件上传成功";
+    }
 }
+
