@@ -12,6 +12,9 @@ public class UserInfo {
     private String Id;
     private int age;
 
+    public UserInfo(){
+
+    }
     public UserInfo(String name, String id, int age) {
         this.name = name;
         Id = id;
