@@ -6,12 +6,21 @@ package com.falls.demos;
  * @date 2024/11/24  17:23
  */
 
+import lombok.*;
 
+// lombok注解
+
+/**
+ *@AllArgsConstructor  // 全参构造方法
+ * @NoArgsConstructor  // 无参构造方法
+ * @Getter             // get
+ * @Setter             // set
+ */
+@Data
 public class UserInfo {
     private String name;
     private String Id;
     private int age;
-
     public UserInfo(){
 
     }
@@ -21,36 +30,9 @@ public class UserInfo {
         this.age = age;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "UserInfo{" +
-                "name='" + name + '\'' +
-                ", Id='" + Id + '\'' +
-                ", age=" + age +
-                '}';
+    public static void main(String[] args) {
+        UserInfo userInfo=new UserInfo();
+        userInfo.setAge(10);
+        System.out.println(userInfo);
     }
 }
