@@ -55,4 +55,17 @@ class UserInfoMapperTest {
         userInfo.setPassword("111");
         System.out.println("影响行数"+userInfoMapper.insertUser(userInfo));;
     }
+
+    @Test
+    void deleteUser() {
+        userInfoMapper.deleteUser(6);
+    }
+
+    @Test
+    void updateUser() {
+        UserInfo userInfo=new UserInfo();
+        userInfo.setId(1);
+        userInfo.setDeleteFlag(1);
+        userInfoMapper.updateUser(userInfo);
+    }
 }

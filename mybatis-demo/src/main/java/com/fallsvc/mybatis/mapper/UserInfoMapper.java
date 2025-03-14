@@ -40,5 +40,10 @@ public interface UserInfoMapper {
     @Insert("insert into user_info (username,password,age) VALUES (#{userInfo.username},#{userInfo.password},#{userInfo.age});")
     Integer insertUser2(@Param("userInfo") UserInfo userInfo);
 
+    @Delete("delete from user_info where id=#{id}")
+    Integer deleteUser(Integer id);
+
+    @Update("update user_info set delete_flag=#{deleteFlag} where id=#{id}")
+    Integer updateUser(UserInfo userInfo);
 
 }
