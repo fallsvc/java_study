@@ -24,11 +24,14 @@ import java.util.Date;
 @RequestMapping("/captcha")
 @RestController
 public class CaptchaController {
-    private static final long VALID_TIME =60*1000 ;
+    private static final long VALID_TIME =60*1000L;
     @Autowired
     private CaptchaProperties captchaProperties;
     @RequestMapping("/getCaptcha")
     public void getCaptcha(HttpSession session, HttpServletResponse response)  {
+        response.setContentType("image/jpg");
+        // 一般前端处理，禁止缓存
+        response.setHeader("Progma","No-cache");
         //定义图形验证码的长和宽
         LineCaptcha lineCaptcha = CaptchaUtil.createLineCaptcha(captchaProperties.getWidth(), captchaProperties.getHeight());
 
@@ -43,15 +46,21 @@ public class CaptchaController {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     *
+     * @param captcha 用户输入验证码
+     * @param session
+     * @return
+     */
     @RequestMapping("/check")
     public boolean check(String captcha,HttpSession session){
        if(!StringUtils.hasLength(captcha)){
            return false;
        }
-
-        String code=(String) session.getAttribute(captchaProperties.getSession().getKey());
+        String code=(String)session.getAttribute(captchaProperties.getSession().getKey());
         Date date=(Date)session.getAttribute(captchaProperties.getSession().getDate());
-        if(captcha.equals(code)&&System.currentTimeMillis()-date.getTime()<VALID_TIME){
+        if(captcha.equalsIgnoreCase(code)&&date!=null&&System.currentTimeMillis()-date.getTime()<VALID_TIME){
             return true;
         }
         return false;

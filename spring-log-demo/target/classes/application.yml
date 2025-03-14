@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: spring-log-demo
+#    root: trace
+#日志最低级别
+logging:
+  level:
+    root: info
+    com:
+      fallsvc:
+        log:
+          controller: trace
+  file:
+    name: log/log.log
+  #   or  path: log/  默认名称spring.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz
+      # 日志格式
+#  pattern:
+#    console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
+#    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} %c %M %L [%thread] %m%n'

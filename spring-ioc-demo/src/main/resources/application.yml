@@ -1,0 +1,33 @@
+server:
+  port: 9091
+
+my:
+  key1: 1
+  key2: 2
+# Null,~表示null
+value: ~
+# 空字符串
+null.value:~
+#一级key
+my-key: value
+#多级
+spring:
+  datasource:
+    url: jdbc:jdbc:mysql://127.0.0.1:3306/testdb?characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+
+person:
+  id: 11
+  name: zhangsan
+  age: 19
+
+dbtypes:
+  name:
+    - zhangsan
+    - lis
+    - wangwu
+  ball:
+    k1: v1
+    k2: v2
+    k3: v3

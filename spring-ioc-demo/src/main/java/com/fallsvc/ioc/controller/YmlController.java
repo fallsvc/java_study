@@ -21,6 +21,9 @@ public class YmlController {
     @Autowired
     private com.fallsvc.ioc.model.dbtypes dbtypes;
 
+    /**
+     * 初始化方法
+     */
     @PostConstruct
     public void print(){
         System.out.println(person);
