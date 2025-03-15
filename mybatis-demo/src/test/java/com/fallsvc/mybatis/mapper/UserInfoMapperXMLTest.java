@@ -44,4 +44,15 @@ public class UserInfoMapperXMLTest {
         userInfo.setPhone("15310929591");
         userInfoMapperXML.updateUser(userInfo);
     }
+
+    @Test
+    void insertUser2() {
+        UserInfo userInfo=new UserInfo();
+        userInfo.setUsername("zhaaaaaa");
+        userInfo.setPassword("123455");
+        userInfo.setAge(10);
+        userInfo.setPhone("wwww");
+
+        userInfoMapperXML.insertUser2(userInfo);
+    }
 }

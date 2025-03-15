@@ -18,4 +18,6 @@ public interface UserInfoMapperXML {
     Integer insertUser(@Param("userInfo") UserInfo userInfo);
     Integer deleteUser(UserInfo userInfo);
     Integer updateUser(UserInfo userInfo);
+
+    Integer insertUser2(UserInfo userInfo);
 }

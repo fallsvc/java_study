@@ -23,4 +23,11 @@ public class UserInfoService {
     public UserInfo getAllUserById(Integer n) {
         return userInfoMapper.selectAllById(n);
     }
+
+    public boolean getAllUserByPassword(UserInfo userInfo) {
+        List<UserInfo> n=userInfoMapper.selectAllBy3(userInfo.getUsername(),userInfo.getPassword());
+        if(n!=null&&n.size()>=1) return true;
+
+        return false;
+    }
 }

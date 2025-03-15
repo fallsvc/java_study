@@ -26,4 +26,11 @@ public class UserInfoController {
     public UserInfo getAllUserById(Integer id){
         return userInfoService.getAllUserById(id);
     }
+    @RequestMapping("/login")
+    public boolean loginByNameId(String userName,String password){
+        UserInfo userInfo=new UserInfo();
+        userInfo.setUsername(userName);
+        userInfo.setPassword(password);
+        return userInfoService.getAllUserByPassword(userInfo);
+    }
 }

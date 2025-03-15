@@ -68,4 +68,14 @@ class UserInfoMapperTest {
         userInfo.setDeleteFlag(1);
         userInfoMapper.updateUser(userInfo);
     }
+
+    @Test
+    void selectUserByAscDesc() {
+        userInfoMapper.selectUserByAscDesc("desc").stream().forEach(x-> System.out.println(x));
+    }
+
+    @Test
+    void selectUserInfoByLike() {
+        userInfoMapper.selectUserInfoByLike("w").stream().forEach(x-> System.out.println(x));
+    }
 }
