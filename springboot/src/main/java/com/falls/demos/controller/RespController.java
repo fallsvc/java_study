@@ -1,6 +1,6 @@
-package com.falls.demos;
+package com.falls.demos.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+import com.falls.demos.model.UserInfo;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

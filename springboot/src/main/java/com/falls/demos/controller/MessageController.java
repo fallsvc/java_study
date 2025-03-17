@@ -1,5 +1,8 @@
-package com.falls.demos;
+package com.falls.demos.controller;
 
+import com.falls.demos.model.MessageInfo;
+import com.falls.demos.service.MessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +19,8 @@ import java.util.List;
 @RequestMapping("/message")
 @RestController
 public class MessageController {
-    private List<Message> list=new ArrayList<>();
+    @Autowired
+    private MessageService messageService;
     /**
      * @RequestBody 接受json
      * produces = "application/json" 返回json  return "\"ok\  ":0";
@@ -24,16 +28,16 @@ public class MessageController {
      * @return
      */
     @RequestMapping(value = "/publish",produces = "application/json")
-    public String publish(@RequestBody Message message){
+    public String publish(@RequestBody MessageInfo message){
         if(!StringUtils.hasLength(message.getFrom())||!StringUtils.hasLength(message.getTo())||
                 !StringUtils.hasLength(message.getMessage())){
             return "{\"ok\":0}";
         }
-        list.add(message);
+        messageService.addMessage(message);
         return "{\"ok\":1}";
     }
     @RequestMapping("/getList")
-    public List<Message> getList(){
-        return list;
+    public List<MessageInfo> getList(){
+        return messageService.getAllMessageInfo();
     }
 }

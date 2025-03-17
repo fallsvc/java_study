@@ -1,4 +1,4 @@
-package com.falls.demos;
+package com.falls.demos.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

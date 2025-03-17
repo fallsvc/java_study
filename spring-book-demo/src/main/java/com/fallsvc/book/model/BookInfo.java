@@ -3,6 +3,7 @@ package com.fallsvc.book.model;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @auther falls_vc
@@ -11,12 +12,14 @@ import java.math.BigDecimal;
  */
 @Data
 public class BookInfo {
-    private Integer bookId;
+    private Integer Id;
     private String bookName;
     private String author;
-    private Integer num;
+    private Integer count;
     private BigDecimal price;
     private String publish;
-    private Integer status;
+    private Integer status;//
     private String statusCN;
+    private Date createTime;
+    private Date updateTime;
 }

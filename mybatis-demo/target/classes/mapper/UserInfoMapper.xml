@@ -19,7 +19,7 @@
     <select id="selectAll" resultMap="BaseMap">
         select * from user_info
     </select>
-<!--    <insert id="insertUser">-->
+    <!--    <insert id="insertUser">-->
 <!--        insert into user_info (username,password,age) VALUES (#{username},#{password},#{age})-->
 <!--    </insert>-->
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
@@ -33,14 +33,95 @@
         delete from user_info where id=#{id}
     </delete>
     <insert id="insertUser2">
-        insert into user_info (username,password,age,
+        insert into user_info
+        <trim suffixOverrides="," prefix="(" suffix=")"> // suffixOverrides除后缀为,  prefix加前缀 suffix加后缀
+        <if test="username!=null">
+            username,
+        </if>
+        <if test="password!=null">
+            password,
+        </if>
+        <if test="age!=null">
+            age,
+        </if>
         <if test="gender!=null">
             gender,
         </if>
-        phone) values (#{username},#{password},#{age},
-        <if test="gender!=null">
-            #{gender},
+        <if test="phone!=null">
+            phone
         </if>
-        #{phone})
+        </trim>
+        values
+        <trim suffixOverrides="," prefix="(" suffix=")">
+        <if test="username!=null">
+            #{username},
+        </if>
+        <if test="password!=null">
+            #{password},
+        </if>
+        <if test="age!=null">
+            #{age},
+        </if>
+        <if test="gender!=null">
+        #{gender},
+        </if>
+        <if test="phone!=null">
+            #{phone}
+        </if>
+        </trim>
+
     </insert>
+    <select id="selectUser" resultType="com.fallsvc.mybatis.model.UserInfo">
+        select * from user_info
+<!--         使查询始终有结果可以使用'<where>'where语句无内容就去除where 有则去前缀或者后缀。也可以使用where 1=1 保证一定有值-->
+        <where>
+            <if test="phone!=null">
+                and phone=#{phone}
+            </if>
+            <if test="password!=null">
+                and password=#{password}
+            </if>
+        </where>
+    </select>
+    <update id="updateByConfition">
+        update user_info
+<!--        <set> 去前后缀-->
+        <set>
+            <if test="password!=null">
+                password=#{password},
+            </if>
+            <if test="age!=null">
+                age=#{age}
+            </if>
+        </set>
+        where id=#{id}
+<!--        update user_info-->
+<!--        set-->
+<!--        <trim suffixOverrides=",">-->
+<!--            <if test="password!=null">-->
+<!--                password=#{password},-->
+<!--            </if>-->
+<!--            <if test="age!=null">-->
+<!--                age=#{age}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--        where id=#{id}-->
+<!--        这里的where 一定要写 不能使用<where>-->
+    </update>
+    <delete id="batchDelete">
+        delete from user_info where id in
+<!--        (1,2,3)-->
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+<!--&lt;!&ndash;        id=1 or id=2 or id=3&ndash;&gt;-->
+<!--        <foreach collection="ids" separator="or" item="id">-->
+<!--            id=#{id}-->
+<!--        </foreach>-->
+<!--        ("p1","z1"),("p2","z2")-->
+<!--        <foreach collection="ids" separator="," item="userInfo">-->
+<!--            (#{userInfo.username},#{userInfo.password})-->
+<!--        </foreach>-->
+    </delete>
+
 </mapper>

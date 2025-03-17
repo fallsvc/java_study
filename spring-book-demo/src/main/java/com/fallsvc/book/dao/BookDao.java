@@ -22,10 +22,10 @@ public class BookDao {
         List<BookInfo> list=new ArrayList<>();
         for (int i = 0; i < 15; i++) {
             BookInfo bookInfo=new BookInfo();
-            bookInfo.setBookId(i);
+            bookInfo.setId(i);
             bookInfo.setBookName("图书"+i);
             bookInfo.setAuthor("作者"+i);
-            bookInfo.setNum(new Random().nextInt(100));
+            bookInfo.setCount(new Random().nextInt(100));
             bookInfo.setPrice(new BigDecimal(new Random().nextInt(199)));
             bookInfo.setPublish("出版社"+i);
             bookInfo.setStatus(i%5==0?2:1);// 1可借阅 2不可借阅

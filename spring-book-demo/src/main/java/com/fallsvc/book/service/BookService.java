@@ -1,6 +1,7 @@
 package com.fallsvc.book.service;
 
 import com.fallsvc.book.dao.BookDao;
+import com.fallsvc.book.mapper.BookMapper;
 import com.fallsvc.book.model.BookInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,8 @@ import java.util.Random;
 public class BookService {
     @Autowired
     private BookDao bookDao;
+    @Autowired
+    private BookMapper bookMapper;
     public List<BookInfo> getList(){
         // 未学数据库，mock数据
         List<BookInfo> list=bookDao.mockData();
@@ -32,5 +35,9 @@ public class BookService {
             }
         }
         return list;
+    }
+
+    public void addBook(BookInfo bookInfo) {
+        bookMapper.addBook(bookInfo);
     }
 }

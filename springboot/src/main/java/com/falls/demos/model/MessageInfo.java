@@ -1,8 +1,10 @@
-package com.falls.demos;
+package com.falls.demos.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 /**
  * @auther falls_vc
@@ -12,9 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Message {
+public class MessageInfo {
+    private Integer id;
     private String from;
     private String to;
     private String message;
+    private Integer deleteFlag;
+    private Date createTime;
+    private Date updateTime;
 
 }

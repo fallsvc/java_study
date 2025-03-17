@@ -20,4 +20,8 @@ public interface UserInfoMapperXML {
     Integer updateUser(UserInfo userInfo);
 
     Integer insertUser2(UserInfo userInfo);
+    List<UserInfo> selectUser(UserInfo userInfo);
+    Integer updateByConfition(UserInfo userInfo);
+
+    Integer batchDelete(List<Integer> ids);
 }

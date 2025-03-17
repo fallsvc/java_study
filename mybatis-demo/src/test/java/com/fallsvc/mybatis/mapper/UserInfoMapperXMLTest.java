@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 /**
  * @auther falls_vc
  * description:
@@ -54,5 +56,11 @@ public class UserInfoMapperXMLTest {
         userInfo.setPhone("wwww");
 
         userInfoMapperXML.insertUser2(userInfo);
+    }
+
+    @Test
+    void batchDelete() {
+        List<Integer> list=List.of(11);
+        userInfoMapperXML.batchDelete(list);
     }
 }

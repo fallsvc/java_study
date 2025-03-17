@@ -1,6 +1,5 @@
-package com.falls.demos;
+package com.falls.demos.controller;
 
-import ch.qos.logback.core.util.StringUtil;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;

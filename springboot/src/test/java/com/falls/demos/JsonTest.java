@@ -1,5 +1,6 @@
 package com.falls.demos;
 
+import com.falls.demos.model.UserInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;

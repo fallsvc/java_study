@@ -1,4 +1,4 @@
-package com.falls.demos;
+package com.falls.demos.model;
 
 /**
  * @auther falls_vc
