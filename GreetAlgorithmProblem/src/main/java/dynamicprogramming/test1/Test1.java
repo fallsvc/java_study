@@ -8,6 +8,8 @@ import java.util.Arrays;
  * @date 2025/3/12  18:17
  */
 public class Test1 {
+
+    //
 //    https://leetcode.cn/problems/delete-and-earn/solutions/?envType=study-plan-v2&envId=dynamic-programming
 public static int deleteAndEarn(int[] nums) {
     int mx = 0;

@@ -1,9 +1,6 @@
 package optimizationalgorithm.process1.demo2;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @auther falls_vc
@@ -134,11 +131,123 @@ public int mySqrt(int x) {
         }
         return left;
     }
-    public static void main2(String[] args) {
+    //https://leetcode.cn/problems/peak-index-in-a-mountain-array/
+    //    山峰问题
+    public int peakIndexInMountainArray(int[] arr) {
+        int left=0,right=arr.length-1;
+        // 找右端点
+        while(left<right){
+            int mid=left+(right-left+1)/2;
+            if(arr[mid]>arr[mid-1]) left=mid;
+            else right=mid-1;
+        }
+        return left;
+    }
+//https://leetcode.cn/problems/find-peak-element/
+public int findPeakElement(int[] nums) {
+    int left=0,right=nums.length-1;
+    while(left<right){
+        int mid=left+(right-left)/2;
+        if(nums[mid]>nums[mid+1]){
+            right=mid;
+        }else{
+            left=mid+1;
+        }
+    }
+    return left;
+}
+//https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/
+    // 右边点为判断条件
+public int findMin(int[] nums) {
+    int n=nums.length;
+    int left=0,right=n-1;
+    // 分成大于nums[n-1] 部分和小于等于它的部分
+    while(left<right){
+        int mid=left+(right-left)/2;
+        if(nums[mid]>nums[n-1]) left=mid+1;
+        else right=mid;
+    }
+    return nums[left];
+}
+    // 以左边点为判断条件
+    public int findMin2(int[] nums) {
+        int n=nums.length;
+        // 处理边界
+        if(nums[0]<nums[n-1]) return nums[0];
+        int left=0,right=n-1;
+        //
+        while(left<right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]>=nums[0]) left=mid+1;
+            else right=mid;
+        }
+        return nums[left];
+    }
+//    https://leetcode.cn/problems/que-shi-de-shu-zi-lcof/submissions/
+//    以下标和对应值是否相等来分两个区间,所缺值为不相等区间的左端点值
+public int takeAttendance(int[] records) {
+    int left=0,right=records.length; // 这里right 防止records={0} 解决需要返回1这种情况
+    while(left<right){
+        int mid=left+(right-left)/2;
+        if(mid==records[mid]) left=mid+1;
+        else right=mid;
+    }
+    return left;
+}
+//    https://leetcode.cn/problems/search-in-rotated-sorted-array/description/?envType=problem-list-v2&envId=binary-search
+    public int search(int[] nums, int target) {
+        if(nums==null||nums.length==0) return -1;
+
+        int left=0,right=nums.length-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]==target) return mid;
+            if(nums[mid]>=nums[left]){
+                if(target>=nums[left]&&target<nums[mid]) right=mid-1;
+                else left=mid+1;
+            }else{
+                if(target<=nums[right]&&target>nums[mid]) left=mid+1;
+                else right=mid-1;
+            }
+        }
+
+        return -1;
+    }
+//    https://www.nowcoder.com/practice/99eb8040d116414ea3296467ce81cbbc?tpId=230&tqId=2023819&ru=/exam/oj&qru=/ta/dynamic-programming/question-ranking&sourceUrl=%2Fexam%2Foj%3Fpage%3D1%26tab%3D%25E7%25AE%2597%25E6%25B3%2595%25E7%25AF%2587%26topicId%3D196
+    public static void main3(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        int n = in.nextInt(), m = in.nextInt(), q = in.nextInt();
+        int[][] arr = new int[n + 1][m + 1];
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                arr[i][j] = in.nextInt();
+            }
+        }
+        long[][] dp = new long[n + 1][m + 1];
+        // 初始化dp
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= m; j++) {
+                dp[i][j] =dp[i][j-1]+dp[i-1][j]-dp[i-1][j-1]+arr[i][j];
+            }
+        }
+        while(q>0){
+            int x1=in.nextInt(),y1=in.nextInt(),x2=in.nextInt(),y2=in.nextInt();
+            long ret =dp[x2][y2]-dp[x2][y1-1]-dp[x1-1][y2]+dp[x1-1][y1-1];
+            System.out.println(ret);
+            q--;
+        }
+    }
+
+    public static void main(String[] args) {
+
+        HashSet<Integer> hashSet=new HashSet<>();
+        HashMap<Integer,String> hashMap=new HashMap<>();
 //       String  s ="qqqqqqqqqq";
 //        String[] words ={"qq","qq"};
 //        System.out.println(findSubstring(s, words));
         int n=2147395599;
 //        System.out.println(mySqrt(n));
+        System.out.println(Integer.MIN_VALUE);
     }
 }

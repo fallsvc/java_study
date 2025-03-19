@@ -1,4 +1,4 @@
-package dynamicprogramming.demo1;
+package dynamicprogramming.fibonaccisequencemodel;
 
 /**
  * @auther falls_vc

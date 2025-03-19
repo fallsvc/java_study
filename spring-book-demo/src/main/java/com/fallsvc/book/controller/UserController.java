@@ -19,6 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
+
+    /**
+     *
+     * @param name
+     * @param password
+     * @param session
+     * @return true 密码正确 false 错误
+     */
     @RequestMapping("/login")
     public Boolean login(String name, String password, HttpSession session){
         //

@@ -18,7 +18,7 @@ public class BookInfo {
     private Integer count;
     private BigDecimal price;
     private String publish;
-    private Integer status;//
+    private Integer status;//0删除 1正常 2不可借阅
     private String statusCN;
     private Date createTime;
     private Date updateTime;

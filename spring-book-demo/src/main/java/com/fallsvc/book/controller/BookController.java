@@ -1,6 +1,8 @@
 package com.fallsvc.book.controller;
 
 import com.fallsvc.book.model.BookInfo;
+import com.fallsvc.book.model.PageRequest;
+import com.fallsvc.book.model.ResponseResult;
 import com.fallsvc.book.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -25,14 +27,16 @@ import java.util.Random;
 public class BookController {
     @Autowired
     private BookService bookService;
-    @RequestMapping("/getList")
-    public List<BookInfo> getList(){
+//    @RequestMapping("/getList")
+//    public List<BookInfo> getList(){
+//
+//        return bookService.getList();
+//    }
 
-        return bookService.getList();
-    }
 
     @RequestMapping("/addBook")
     public String addBook(BookInfo bookInfo){
+        log.info("添加图书，request：{}",bookInfo);
         if(!StringUtils.hasLength(bookInfo.getBookName())
                 ||!StringUtils.hasLength(bookInfo.getAuthor())
                 ||!StringUtils.hasLength(bookInfo.getPublish())
@@ -40,15 +44,40 @@ public class BookController {
                 ||bookInfo.getPrice()==null
                 ||bookInfo.getStatus()==null
                 ) {
+            log.error("参数不合法");
             return "参数不合法";
         }
         try{
             bookService.addBook(bookInfo);
             return "";
         }catch (Exception e){
+            log.error("添加图书异常");
             return "添加图书异常";
         }
     }
 
+    @RequestMapping("/getListByPage")
+    public ResponseResult<BookInfo> getListByPage(PageRequest pageRequest){
+        ResponseResult<BookInfo> listByPage=bookService.getListByPage(pageRequest);
 
+        return listByPage;
+    }
+
+    @RequestMapping("/queryBookById")
+    public BookInfo queryBookById(Integer bookId){
+        log.info("查询图书id："+bookId);
+        return bookService.queryBookById(bookId);
+    }
+
+    @RequestMapping("/updateBook")
+    public String updateBook(BookInfo bookInfo){
+        log.info("修改图书：{}",bookInfo);
+        try{
+            bookService.updateBook(bookInfo);
+            return "";
+        }catch (Exception e){
+            log.error("修改图书错误 e:",e);
+            return "修改图书错误";
+        }
+    }
 }
