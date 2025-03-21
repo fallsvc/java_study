@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Data
 public class BookInfo {
-    private Integer Id;
+    private Integer id;
     private String bookName;
     private String author;
     private Integer count;

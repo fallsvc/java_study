@@ -1,14 +1,16 @@
 package com.fallsvc.book.controller;
 
-import com.fallsvc.book.model.BookInfo;
-import com.fallsvc.book.model.PageRequest;
-import com.fallsvc.book.model.ResponseResult;
+import com.fallsvc.book.constant.Constants;
+import com.fallsvc.book.enums.BookStatusEnum;
+import com.fallsvc.book.model.*;
 import com.fallsvc.book.service.BookService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -57,10 +59,13 @@ public class BookController {
     }
 
     @RequestMapping("/getListByPage")
-    public ResponseResult<BookInfo> getListByPage(PageRequest pageRequest){
+    public Result<ResponseResult<BookInfo>> getListByPage(PageRequest pageRequest, HttpSession session){
+
+        UserInfo userInfo=(UserInfo)session.getAttribute(Constants.SESSION_USER_KEY);
+        if(userInfo==null||userInfo.getId()<0)  return Result.unlogin();
         ResponseResult<BookInfo> listByPage=bookService.getListByPage(pageRequest);
 
-        return listByPage;
+        return Result.success(listByPage);
     }
 
     @RequestMapping("/queryBookById")
@@ -79,5 +84,31 @@ public class BookController {
             log.error("修改图书错误 e:",e);
             return "修改图书错误";
         }
+    }
+    @RequestMapping("/deleteBook")
+    public String updateBook(Integer bookId){
+        log.info("修改图书：{}",bookId);
+        try{
+            BookInfo bookInfo=new BookInfo();
+            bookInfo.setId(bookId);
+            bookInfo.setStatus(BookStatusEnum.DELETE.getCode());
+            bookService.updateBook(bookInfo);
+            return "";
+        }catch (Exception e){
+            log.error("删除图书错误 e:",e);
+            return "删除图书错误";
+        }
+    }
+    @RequestMapping("/batchDelete")
+    public String batchDelete(@RequestParam List<Integer> ids){
+        log.info("批量删除图书,ids:{}",ids);
+        try{
+            bookService.batchDelete(ids);
+            return "";
+        }catch (Exception e){
+            log.error("批量删除图书失败！e:",e);
+            return "批量删除图书失败";
+        }
+
     }
 }

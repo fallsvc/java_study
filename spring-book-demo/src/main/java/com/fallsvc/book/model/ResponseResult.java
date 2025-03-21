@@ -1,5 +1,6 @@
 package com.fallsvc.book.model;
 
+import com.fallsvc.book.enums.ResultCodeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,5 @@ public class ResponseResult<T> {
     private Integer total;
     private List<T> records;
     private PageRequest pageRequest;
+
 }

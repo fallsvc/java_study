@@ -1,12 +1,12 @@
 spring:
   application:
-    name: spring-book-demo
+    name: mybatis-plus-demo
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/book_test?characterEncoding=utf8&useSSL=false #需要修改数据库
+    url: jdbc:mysql://127.0.0.1:3306/mybatis_test?characterEncoding=utf8&useSSL=false
     username: root
-    password: 123456  #密码
+    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-mybatis:
+mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true  #驼峰转换
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis 日志

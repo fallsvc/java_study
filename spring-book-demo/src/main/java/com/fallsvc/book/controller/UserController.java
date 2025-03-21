@@ -1,6 +1,7 @@
 package com.fallsvc.book.controller;
 
 
+import com.fallsvc.book.constant.Constants;
 import com.fallsvc.book.model.UserInfo;
 import com.fallsvc.book.service.UserService;
 import jakarta.servlet.http.HttpSession;
@@ -44,7 +45,8 @@ public class UserController {
             return false;
         }
         if(password.equals(userInfo.getPassword())){
-            session.setAttribute("session_user_info",userInfo);
+            userInfo.setPassword("");
+            session.setAttribute(Constants.SESSION_USER_KEY,userInfo);
             return true;
         }
         return false;

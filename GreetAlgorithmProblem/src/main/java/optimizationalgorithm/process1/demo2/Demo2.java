@@ -237,9 +237,10 @@ public int takeAttendance(int[] records) {
             System.out.println(ret);
             q--;
         }
+
     }
 
-    public static void main(String[] args) {
+    public static void main4(String[] args) {
 
         HashSet<Integer> hashSet=new HashSet<>();
         HashMap<Integer,String> hashMap=new HashMap<>();
@@ -249,5 +250,38 @@ public int takeAttendance(int[] records) {
         int n=2147395599;
 //        System.out.println(mySqrt(n));
         System.out.println(Integer.MIN_VALUE);
+    }
+
+//    https://leetcode.cn/problems/subarray-sums-divisible-by-k/
+    public static int subarraysDivByK(int[] nums, int k) {
+        HashMap<Integer,Integer> hash=new HashMap<>();
+        hash.put(0%k,1);// 整体能被整除
+        int sum=0;//记录个数
+        int count=0;//
+        for(int x:nums){
+            sum+=x;
+            int c=(sum%k+k)%k;
+            count+=hash.getOrDefault(c,0);
+            hash.put(c,hash.getOrDefault(c,0)+1);
+        }
+        return count;
+    }
+    public static int subarraysDivByK2(int[] nums, int k) {
+        HashMap<Integer,Integer> hash=new HashMap<>();
+        hash.put(0%k,1);// 整体能被整除
+        int sum=0;//记录个数
+        int count=0;//
+        for(int i=0;i<nums.length;i++){
+            sum+=nums[i];
+            int c=(sum%k+k)%k;
+            count+=hash.getOrDefault(c,0);
+            hash.put(c,hash.getOrDefault(c,0)+1);
+        }
+        return count;
+    }
+    public static void main(String[] args) {
+        int[] arr={4,5,0,-2,-3,1};
+        int k = 5;
+        System.out.println(subarraysDivByK(arr, k));
     }
 }

@@ -54,14 +54,18 @@
                     tpye:"get",
                     url:"/book/getListByPage"+location.search,
                     success:function(result){
-                        if(result==null||result.records==null){
-                            return ;
+                        if(result==null||result.code=="UNLOGIN"){
+                            alert("用户未登录，请先登录");
+                            location.herf="login.html";
                         }
-                       
-                        var books=result.records;
+                        if(result==null||result.data==null){
+                            result;
+                        }
+                       var data=result.data;
+                        var books=data.records;
                         var finalHtml="";
                         for(var book of books){
-                            finalHtml+='<tr><td><input type="checkbox" name="selectBook" value="'+book.bookId+'" id="selectBook" class="book-select"></td>';
+                            finalHtml+='<tr><td><input type="checkbox" name="selectBook" value="'+book.id+'" id="selectBook" class="book-select"></td>';
                             finalHtml+='<td>'+book.id+'</td>';
                             finalHtml+='<td>'+book.bookName+'</td>';
                             finalHtml+='<td>'+book.author+'</td>';
@@ -70,17 +74,17 @@
                             finalHtml+='<td>'+book.publish+'</td>';
                             finalHtml+='<td>'+book.statusCN+'</td>';
                             finalHtml+='<td><div class="op">';
-                            finalHtml+='<a href="book_update.html?bookId='+book.bookId+'">修改</a>';
-                            finalHtml+='<a href="javascript:void(0)" onclick="deleteBook('+book.bookId+')">删除</a>';
+                            finalHtml+='<a href="book_update.html?bookId='+book.id+'">修改</a>';
+                            finalHtml+='<a href="javascript:void(0)" onclick="deleteBook('+book.id+')">删除</a>';
                             finalHtml+='</div></td></tr>';
                         }
                         $("tbody").html(finalHtml);
                          //翻页信息
                         $("#pageContainer").jqPaginator({
-                            totalCounts: result.total, //总记录数
+                            totalCounts: data.total, //总记录数
                             pageSize: 10,    //每页的个数
                             visiblePages: 5, //可视页数
-                            currentPage: result.pageRequest.currentPage,  //当前页码
+                            currentPage: data.pageRequest.currentPage,  //当前页码
                             first: '<li class="page-item"><a class="page-link">首页</a></li>',
                             prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
                             next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
@@ -102,7 +106,18 @@
                 var isDelete = confirm("确认删除?");
                 if (isDelete) {
                     //删除图书
-                    alert("删除成功");
+                    // alert("删除成功");
+                    $.ajax({
+                        type:"post",
+                        url:"/book/deleteBook?bookId="+id,
+                        success: function(result){
+                            if(result==""){
+                                location.href="book_list.html?currentPage=1";
+                            }else{
+                                alert(result);
+                            }
+                        }
+                    });
                 }
             }
             function batchDelete() {
@@ -114,7 +129,19 @@
                         ids.push($(this).val());
                     });
                     console.log(ids);
-                    alert("批量删除成功");
+                    $.ajax({
+                        type:"post",
+                        url:"/book/batchDelete?ids="+ids,
+                        success: function(result){
+                            if(result==""){
+                                location.href="book_list.html?currentPage=1";
+
+                            }else{
+                                alert("批量删除失败");
+                            }
+                        }
+                    });
+                    // alert("批量删除成功");
                 }
             }
 
