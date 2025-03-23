@@ -279,9 +279,72 @@ public int takeAttendance(int[] records) {
         }
         return count;
     }
-    public static void main(String[] args) {
-        int[] arr={4,5,0,-2,-3,1};
-        int k = 5;
-        System.out.println(subarraysDivByK(arr, k));
+
+//https://leetcode.cn/problems/contiguous-array/
+public int findMaxLength(int[] nums) {
+    HashMap<Integer,Integer> hash=new HashMap<>();//（和为,下标）
+    // 0->-1
+    int n=nums.length;
+    for(int i=0;i<n;i++){
+        if(nums[i]==0) nums[i]=-1;
+    }
+    int sum=0; //到这个点的和
+    int len=0; // 记录最大长度
+    for(int i=0;i<n;i++){
+        sum+=nums[i];
+        if(sum==0) len=i+1;
+        int index=hash.getOrDefault(sum,-1);
+        if(index!=-1) {
+            len=Math.max(len,i-index);
+        }else{
+            hash.put(sum,i);
+        }
+    }
+    return len;
+}
+    public int findMaxLength2(int[] nums) {
+        HashMap<Integer,Integer> hash=new HashMap<>();//（和为,下标）
+        hash.put(0,-1); // 处理sum直接和为0
+        int len=0;
+        int sum=0;
+        for(int i=0;i<nums.length;i++){
+            sum+=(nums[i]==0?-1:1);
+            if(hash.containsKey(sum)) len=Math.max(len,i-hash.get(sum));
+            else hash.put(sum,i);
+        }
+        return len;
+    }
+
+//    /https://leetcode.cn/problems/matrix-block-sum/
+    public int[][] matrixBlockSum(int[][] mat, int k) {
+        int m=mat.length;
+        int n=mat[0].length;
+        int[][] dp=new int[m+1][n+1];
+        // 二维前缀和
+        for(int i=1;i<=m;i++){
+            for(int j=1;j<=n;j++){
+                dp[i][j]=dp[i-1][j]+dp[i][j-1]-dp[i-1][j-1]+mat[i-1][j-1];
+            }
+        }
+        // 填写返回值
+        int[][] ret=new int[m][n];
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                int x1=Math.max(0,i-k);
+                int y1=Math.max(0,j-k);
+                int x2=Math.min(m-1,i+k);
+                int y2=Math.min(n-1,j+k);
+                ret[i][j]=dp[x2+1][y2+1]-dp[x2+1][y1]-dp[x1][y2+1]+dp[x1][y1];
+            }
+        }
+        return ret;
+    }
+    public static void main2(String[] args) {
+        int[] arr={0,1,1};
+//        System.out.println(findMaxLength(arr));
+//        int k = 5;
+//        System.out.println(subarraysDivByK(arr, k));
+//        HashMap<Integer,Integer> hash=new HashMap<>();
+//        hash.c
     }
 }
