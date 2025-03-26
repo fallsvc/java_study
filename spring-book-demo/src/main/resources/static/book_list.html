@@ -111,16 +111,16 @@
             function deleteBook(id) {
                 var isDelete = confirm("确认删除?");
                 if (isDelete) {
-                    //删除图书
+                    // 删除图书
                     // alert("删除成功");
                     $.ajax({
                         type:"post",
                         url:"/book/deleteBook?bookId="+id,
                         success: function(result){
-                            if(result==""){
+                            if(result.code=="SUCCESS" && result.data==""){
                                 location.href="book_list.html?currentPage=1";
                             }else{
-                                alert(result);
+                                alert(result.errMsg);
                             }
                         }
                     });
@@ -139,7 +139,7 @@
                         type:"post",
                         url:"/book/batchDelete?ids="+ids,
                         success: function(result){
-                            if(result==""){
+                            if(result.code=="SUCCESS" && result.data==""){
                                 location.href="book_list.html?currentPage=1";
 
                             }else{

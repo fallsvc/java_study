@@ -37,7 +37,7 @@ public class BookController {
 
 
     @RequestMapping("/addBook")
-    public String addBook(BookInfo bookInfo){
+    public Result addBook(BookInfo bookInfo){
         log.info("添加图书，request：{}",bookInfo);
         if(!StringUtils.hasLength(bookInfo.getBookName())
                 ||!StringUtils.hasLength(bookInfo.getAuthor())
@@ -47,14 +47,14 @@ public class BookController {
                 ||bookInfo.getStatus()==null
                 ) {
             log.error("参数不合法");
-            return "参数不合法";
+            return Result.fail("参数不合法");
         }
         try{
             bookService.addBook(bookInfo);
-            return "";
+            return Result.success("");
         }catch (Exception e){
             log.error("添加图书异常");
-            return "添加图书异常";
+            return Result.fail("添加图书异常");
         }
     }
 
@@ -72,39 +72,39 @@ public class BookController {
     }
 
     @RequestMapping("/updateBook")
-    public String updateBook(BookInfo bookInfo){
+    public Result updateBook(BookInfo bookInfo){
         log.info("修改图书：{}",bookInfo);
         try{
             bookService.updateBook(bookInfo);
-            return "";
+            return Result.success("");
         }catch (Exception e){
             log.error("修改图书错误 e:",e);
-            return "修改图书错误";
+            return Result.fail("修改图书失败");
         }
     }
     @RequestMapping("/deleteBook")
-    public String updateBook(Integer bookId){
+    public Result updateBook(Integer bookId){
         log.info("修改图书：{}",bookId);
         try{
             BookInfo bookInfo=new BookInfo();
             bookInfo.setId(bookId);
             bookInfo.setStatus(BookStatusEnum.DELETE.getCode());
             bookService.updateBook(bookInfo);
-            return "";
+            return Result.success("");
         }catch (Exception e){
             log.error("删除图书错误 e:",e);
-            return "删除图书错误";
+            return Result.fail("删除图书错误");
         }
     }
     @RequestMapping("/batchDelete")
-    public String batchDelete(@RequestParam List<Integer> ids){
+    public Result batchDelete(@RequestParam List<Integer> ids){
         log.info("批量删除图书,ids:{}",ids);
         try{
             bookService.batchDelete(ids);
-            return "";
+            return Result.success("");
         }catch (Exception e){
             log.error("批量删除图书失败！e:",e);
-            return "批量删除图书失败";
+            return Result.fail("批量删除图书失败");
         }
 
     }
