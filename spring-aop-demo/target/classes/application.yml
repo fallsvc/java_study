@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: spring-aop-demo
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/book_test?characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true  #驼峰转换
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #mybatis 日志
+  mapper-locations: classpath:mapper/**Mapper.xml #mapper.xml 路径
+logging:
+  file:
+    name: spring-book.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
