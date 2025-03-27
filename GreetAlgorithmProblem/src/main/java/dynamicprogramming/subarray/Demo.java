@@ -77,6 +77,45 @@ public class Demo {
         return sum==min?max:Math.max(sum-min,max);
     }
 
+//https://leetcode.cn/problems/maximum-product-subarray/submissions/616281026/
+    public int maxProduct(int[] nums) {
+        int n=nums.length;
+        int[] f=new int[n];// 到此点的最大乘积
+        int[] g=new int[n];// 最小
+        f[0]=g[0]=nums[0];
+        int ret=f[0];
+        for(int i=1;i<n;i++){
+            f[i]=Math.max(nums[i]*g[i-1],Math.max(nums[i],nums[i]*f[i-1]));
+            g[i]=Math.min(nums[i]*f[i-1],Math.min(nums[i],nums[i]*g[i-1]));
+            ret=Math.max(ret,f[i]);
+        }
 
+        return ret;
+    }
+
+//    https://leetcode.cn/problems/maximum-length-of-subarray-with-positive-product/
+    public int getMaxLen(int[] nums) {
+        int n=nums.length;
+        int[] f=new int[n+1];// 以下标为尾结点的最大正数乘积的长度
+        int[] g=new int[n+1];// 负数
+        int len=0;
+        for(int i=1;i<=n;i++){
+            int x=nums[i-1];
+            if(x<0){
+                f[i]=g[i-1]== 0 ? 0 : g[i-1]+1;
+                g[i]=f[i-1]+1;
+            }else if(x>0){
+                f[i]=f[i-1]+1;
+                g[i]=g[i-1] ==0 ? 0 : g[i-1]+1;
+            }
+            len=Math.max(len,f[i]);
+        }
+        return len;
+    }
+
+    public static void main(String[] args) {
+        int[] n={0,1,-2,-3,-4};
+//        System.out.println(getMaxLen(n));
+    }
     
 }

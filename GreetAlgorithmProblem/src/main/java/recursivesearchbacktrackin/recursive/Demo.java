@@ -20,6 +20,21 @@ public class Demo {
         c.add(a.remove(a.size()-1));// 把a最上面的移动到c
         hanota1(b,a,c,size-1);// 在从b把最后的n-1个通过a移动到c
     }
+
+//https://leetcode.cn/problems/merge-two-sorted-lists/
+//    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+//        if(list1==null) return list2;
+//        if(list2==null) return list1;
+//
+//
+//        if(list1.val<list2.val) {
+//            list1.next=mergeTwoLists(list1.next,list2);
+//            return list1;
+//        }else{
+//            list2.next=mergeTwoLists(list1,list2.next);
+//            return list2;
+//        }
+//    }
     public static void main(String[] args) {
         List<Integer> list=new ArrayList<>();
         list.add(1);
