@@ -35,6 +35,41 @@ public class Demo {
 //            return list2;
 //        }
 //    }
+
+//    https://leetcode.cn/problems/reverse-linked-list/submissions/616622975/
+//    public ListNode reverseList(ListNode head) {
+//        if(head==null ||head.next==null) return head;
+//
+//        ListNode ret=reverseList(head.next);// 反转后面的并返回头指针
+//        // 连接这个点
+//        head.next.next=head;
+//        head.next=null;
+//
+//        return ret;
+//    }
+
+//
+//    https://leetcode.cn/problems/swap-nodes-in-pairs/submissions/616627547/
+//    public ListNode swapPairs(ListNode head) {
+//        if(head==null ||head.next==null) return head;
+//        ListNode ret=swapPairs(head.next.next);// 先交换两个节点后面的 返回头节点
+//        // 交换当前并与后面连接
+//        ListNode tmp=head.next;
+//        head.next.next=head;
+//        head.next=ret;
+//
+//        return tmp; // 返回第二个
+//    }
+
+//    https://leetcode.cn/problems/powx-n/
+    public double myPow(double x, int n) {
+        return n<0?1.0/pow(x,-n):pow(x,n);
+    }
+    public double pow(double x,int n){
+        if(n==0) return 1.0;
+        double tmp=pow(x,n/2);
+        return n%2==0?(tmp*tmp):(tmp*tmp*x);
+    }
     public static void main(String[] args) {
         List<Integer> list=new ArrayList<>();
         list.add(1);
@@ -43,5 +78,6 @@ public class Demo {
         list.remove(0);
         System.out.println(list);
         Collections.reverse(list);
+
     }
 }
