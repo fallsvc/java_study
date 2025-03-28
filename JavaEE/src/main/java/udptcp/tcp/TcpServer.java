@@ -13,11 +13,13 @@ import java.util.concurrent.Executors;
  * @date 2024/11/15  10:33
  */
 public class TcpServer {
-    ServerSocket serverSocket=null;
+    private ServerSocket serverSocket=null;
 
+    // 以端口号创建TCPServer服务
     public TcpServer(int port) throws IOException {
         serverSocket=new ServerSocket(port);
     }
+    // 启动服务
     public void start() throws IOException {
         System.out.println("服务器启动：");
         while (true) {
@@ -28,7 +30,7 @@ public class TcpServer {
 //                processConnection(clientSocket);
 //            });
 //            thread.start();
-            // 线程池
+            // 线程池 处理请求
             ExecutorService executorService= Executors.newCachedThreadPool();
             executorService.submit(()->{
                 processConnection(clientSocket);
@@ -63,7 +65,7 @@ public class TcpServer {
             throw new RuntimeException(e);
         }finally {
             try {
-                clientSocket.close();
+                clientSocket.close();// 关闭
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -74,6 +76,7 @@ public class TcpServer {
         return request;
     }
 
+    // 启动TCP服务
     public static void main(String[] args) throws IOException {
         TcpServer tcpServer=new TcpServer(9090);
         tcpServer.start();

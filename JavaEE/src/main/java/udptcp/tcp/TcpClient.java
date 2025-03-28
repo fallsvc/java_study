@@ -13,8 +13,9 @@ import java.util.Scanner;
  * @date 2024/11/15  10:33
  */
 public class TcpClient {
-    Socket socket=null;
+    private Socket socket=null;
 
+    // 以目标服务端的ip 和端口号 创建socket
     public TcpClient(String serverIp,int serverPort) throws IOException {
         socket=new Socket(serverIp,serverPort);
     }
