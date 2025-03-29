@@ -186,13 +186,38 @@ public class Demo {
         }
         return dp[n];
     }
-    public static void main(String[] args) {
-        int[] n={0,1,-2,-3,-4};
-//        System.out.println(getMaxLen(n));
-        String s="1122";
-        List<Integer> list=new ArrayList<>();
 
-        System.out.println(s.substring(1, 3));
+//    https://leetcode.cn/problems/unique-substrings-in-wraparound-string/
+    public int findSubstringInWraproundString(String s) {
+        int n=s.length();
+        int[] dp=new int[n];// 下标这个字符结尾的子串长度
+        for(int i=0;i<n;i++) dp[i]=1;
+        // 记录这个字符结尾的最大子串个数
+        int[] ret=new int[26];
+        ret[s.charAt(0)-'a']=1;
+
+        for(int i=1;i<n;i++){
+            char a=s.charAt(i-1),b=s.charAt(i);
+            if(a+1==b||a==b+25)
+                dp[i]+=dp[i-1];
+            ret[b-'a']=Math.max(dp[i],ret[b-'a']);
+        }
+        int count=0;
+        for(int i=0;i<26;i++) count+=ret[i];
+
+        return count;
+    }
+    public static void main(String[] args) {
+//        int[] n={0,1,-2,-3,-4};
+////        System.out.println(getMaxLen(n));
+//        String s="1122";
+//        List<Integer> list=new ArrayList<>();
+//
+//        System.out.println(s.substring(1, 3));
+
+//        System.out.println('a'+1=='b');
+
+//        findSubstringInWraproundString("zab");
     }
     
 }
