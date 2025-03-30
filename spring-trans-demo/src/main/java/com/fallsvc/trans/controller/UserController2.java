@@ -4,6 +4,8 @@ package com.fallsvc.trans.controller;
 import com.fallsvc.trans.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,6 +61,28 @@ public class UserController2 {
     @Transactional(rollbackFor = Exception.class)
     @RequestMapping("/r3")
     public String r3(String name, String password) throws IOException {
+        //⽤⼾注册
+        Integer result=userService.registryUser(name, password);
+        log.info("用户注册成功,影响行数："+result);
+       if(true){
+           throw new IOException();
+       }
+        return "注册成功";
+    }
+    @Transactional(isolation = Isolation.READ_COMMITTED)
+    @RequestMapping("/r4")
+    public String r4(String name, String password) throws IOException {
+        //⽤⼾注册
+        Integer result=userService.registryUser(name, password);
+        log.info("用户注册成功,影响行数："+result);
+       if(true){
+           throw new IOException();
+       }
+        return "注册成功";
+    }
+    @Transactional(propagation = Propagation.REQUIRED)
+    @RequestMapping("/r5")
+    public String r5(String name, String password) throws IOException {
         //⽤⼾注册
         Integer result=userService.registryUser(name, password);
         log.info("用户注册成功,影响行数："+result);
