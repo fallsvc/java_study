@@ -1,0 +1,80 @@
+2025-03-21T22:13:56.353+08:00  INFO 36480 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 36480 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:13:56.363+08:00  INFO 36480 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:13:58.174+08:00  INFO 36480 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 2.116 seconds (process running for 3.24)
+2025-03-21T22:13:58.875+08:00  INFO 36480 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:13:59.005+08:00  INFO 36480 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@23ec63af
+2025-03-21T22:13:59.007+08:00  INFO 36480 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:13:59.079+08:00  INFO 36480 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:13:59.086+08:00  INFO 36480 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:27:11.470+08:00  INFO 7504 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 7504 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:27:11.471+08:00  INFO 7504 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:27:12.991+08:00  INFO 7504 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.758 seconds (process running for 2.33)
+2025-03-21T22:27:13.466+08:00  INFO 7504 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:27:13.588+08:00  INFO 7504 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@c190cfc
+2025-03-21T22:27:13.589+08:00  INFO 7504 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:27:13.748+08:00  INFO 7504 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:27:13.753+08:00  INFO 7504 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:29:56.564+08:00  INFO 7540 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 7540 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:29:56.564+08:00  INFO 7540 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:29:58.058+08:00  INFO 7540 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.717 seconds (process running for 2.277)
+2025-03-21T22:29:58.610+08:00  INFO 7540 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:29:58.717+08:00  INFO 7540 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@28dacf31
+2025-03-21T22:29:58.718+08:00  INFO 7540 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:29:58.759+08:00  INFO 7540 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:29:58.762+08:00  INFO 7540 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:30:19.641+08:00  INFO 21944 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 21944 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:30:19.643+08:00  INFO 21944 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:30:21.349+08:00  INFO 21944 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.961 seconds (process running for 2.6)
+2025-03-21T22:30:22.045+08:00  INFO 21944 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:30:22.157+08:00  INFO 21944 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4b8a0d03
+2025-03-21T22:30:22.159+08:00  INFO 21944 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:30:22.208+08:00  INFO 21944 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:30:22.213+08:00  INFO 21944 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:39:28.873+08:00  INFO 28108 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 28108 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:39:28.874+08:00  INFO 28108 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:39:30.407+08:00  INFO 28108 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.788 seconds (process running for 2.419)
+2025-03-21T22:39:30.925+08:00  INFO 28108 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:39:31.038+08:00  INFO 28108 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2110684a
+2025-03-21T22:39:31.039+08:00  INFO 28108 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:39:31.085+08:00  INFO 28108 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:39:31.090+08:00  INFO 28108 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:41:40.708+08:00  INFO 3796 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 3796 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:41:40.709+08:00  INFO 3796 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:41:42.220+08:00  INFO 3796 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.745 seconds (process running for 2.333)
+2025-03-21T22:41:42.761+08:00  INFO 3796 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:41:42.860+08:00  INFO 3796 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@13390a96
+2025-03-21T22:41:42.861+08:00  INFO 3796 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:41:42.902+08:00  INFO 3796 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:41:42.907+08:00  INFO 3796 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:44:20.535+08:00  INFO 35612 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 35612 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:44:20.536+08:00  INFO 35612 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:44:22.025+08:00  INFO 35612 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.735 seconds (process running for 2.34)
+2025-03-21T22:44:22.501+08:00  INFO 35612 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:44:22.608+08:00  INFO 35612 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ed691fd
+2025-03-21T22:44:22.609+08:00  INFO 35612 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:44:22.755+08:00  INFO 35612 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:44:22.762+08:00  INFO 35612 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:44:47.533+08:00  INFO 33048 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 33048 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:44:47.534+08:00  INFO 33048 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:44:49.056+08:00  INFO 33048 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.749 seconds (process running for 2.323)
+2025-03-21T22:44:49.574+08:00  INFO 33048 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:44:49.676+08:00  INFO 33048 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ecdcfe3
+2025-03-21T22:44:49.677+08:00  INFO 33048 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:44:49.721+08:00  INFO 33048 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:44:49.726+08:00  INFO 33048 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T22:58:50.428+08:00  INFO 29868 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Starting UserInfoTest using Java 17.0.9 with PID 29868 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T22:58:50.429+08:00  INFO 29868 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T22:58:51.860+08:00  INFO 29868 --- [mybatis-plus-demo] [main] c.f.m.userinfotest.UserInfoTest          : Started UserInfoTest in 1.661 seconds (process running for 2.237)
+2025-03-21T22:58:52.587+08:00  INFO 29868 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T22:58:52.688+08:00  INFO 29868 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26cdd4af
+2025-03-21T22:58:52.690+08:00  INFO 29868 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T22:58:52.750+08:00  INFO 29868 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T22:58:52.754+08:00  INFO 29868 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-03-21T23:41:39.446+08:00  INFO 4324 --- [mybatis-plus-demo] [main] c.f.m.mapper.UserInfoMapperTest          : Starting UserInfoMapperTest using Java 17.0.9 with PID 4324 (started by 12092 in C:\Study\github\java_study\mybatis-plus-demo)
+2025-03-21T23:41:39.447+08:00  INFO 4324 --- [mybatis-plus-demo] [main] c.f.m.mapper.UserInfoMapperTest          : No active profile set, falling back to 1 default profile: "default"
+2025-03-21T23:41:41.094+08:00  INFO 4324 --- [mybatis-plus-demo] [main] c.f.m.mapper.UserInfoMapperTest          : Started UserInfoMapperTest in 1.926 seconds (process running for 2.573)
+2025-03-21T23:41:41.603+08:00  INFO 4324 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-21T23:41:41.711+08:00  INFO 4324 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@591e5fd4
+2025-03-21T23:41:41.713+08:00  INFO 4324 --- [mybatis-plus-demo] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-21T23:41:41.767+08:00  INFO 4324 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-21T23:41:41.771+08:00  INFO 4324 --- [mybatis-plus-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

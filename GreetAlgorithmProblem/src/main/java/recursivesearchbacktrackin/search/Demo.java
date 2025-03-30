@@ -94,8 +94,28 @@ public class Demo {
 //        dfs(root.right);
 //    }
 public static void main(String[] args) {
-
+    String a=1+"";
+    System.out.println(a);
 }
 
+//    https://leetcode.cn/problems/binary-tree-paths/
+//    List<String> list=new ArrayList<>();
+//    public List<String> binaryTreePaths(TreeNode root) {
+//        dfs(root,new StringBuilder());
+//
+//        return list;
+//    }
+//    public void dfs(TreeNode root,StringBuilder _path){
+//        if(root==null) return;// 出口
+//
+//        StringBuilder path=new StringBuilder(_path);
+//        if(root.left==null&&root.right==null){
+//            path.append(root.val);
+//            list.add(path.toString());
+//        }
+//        path.append(root.val+"->");
+//        dfs(root.left,path);
+//        dfs(root.right,path);
+//    }
 
 }
