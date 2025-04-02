@@ -16,4 +16,7 @@ public class BlogException extends RuntimeException{
         this.code = code;
         this.message = message;
     }
+    public BlogException(String message) {
+        this.message = message;
+    }
 }
