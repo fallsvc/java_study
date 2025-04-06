@@ -13,7 +13,8 @@ import org.hibernate.validator.constraints.Length;
 public class UserLoginRequest {
     @NotNull(message = "用户名不能为空")
     private String username;
-    @Length(max = 20,min = 5)
+
     @NotNull(message = "密码不能为空")
+    @Length(max = 20,min = 5,message = "密码长度必须在5-20")
     private String password;
 }

@@ -1,10 +1,13 @@
 package com.fallsvc.demo.controller;
 
+import com.fallsvc.demo.pojo.request.AddBlogRequest;
 import com.fallsvc.demo.pojo.response.BlogInfoResponse;
 import com.fallsvc.demo.service.BlogService;
 import jakarta.annotation.Resource;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -31,9 +34,17 @@ public class BlogController {
     }
 
     @RequestMapping("/getBlogDetail")
-    public BlogInfoResponse getBlogDetail(@NotNull Integer blogId){
+    public BlogInfoResponse getBlogDetail(@NotNull(message = "blogId不能为null") Integer blogId){
         log.info("获取博客信息，blogId：{}",blogId);
         return blogService.getBlogDetail(blogId);
+    }
+    /**
+     * 添加博客
+     */
+    @RequestMapping("/add")
+    public Boolean addBlog(@RequestBody @Validated AddBlogRequest addBlogRequest){
+        log.info("添加博客信息，用户id：{}，博客标题：{}",addBlogRequest.getUserId(),addBlogRequest.getTitle());
+        return blogService.addBlog(addBlogRequest);
     }
 
 }

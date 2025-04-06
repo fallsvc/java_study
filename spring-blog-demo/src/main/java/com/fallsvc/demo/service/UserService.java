@@ -1,6 +1,7 @@
 package com.fallsvc.demo.service;
 
 import com.fallsvc.demo.pojo.request.UserLoginRequest;
+import com.fallsvc.demo.pojo.response.UserInfoResponse;
 import com.fallsvc.demo.pojo.response.UserLoginResponse;
 
 /**
@@ -10,4 +11,8 @@ import com.fallsvc.demo.pojo.response.UserLoginResponse;
  */
 public interface UserService {
     UserLoginResponse checkPassword(UserLoginRequest userLoginRequest);
+
+    UserInfoResponse getUserInfo(Integer userId);
+
+    UserInfoResponse getAuthorInfo(Integer blogId);
 }

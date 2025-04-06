@@ -1,17 +1,13 @@
 package com.fallsvc.demo.common.utils;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtParser;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
+import io.jsonwebtoken.security.SignatureException;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.StringUtils;
 
-import java.beans.Encoder;
-import java.nio.charset.StandardCharsets;
 import java.security.Key;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -19,6 +15,7 @@ import java.util.Map;
  * description:
  * @date 2025/4/2  10:47
  */
+@Slf4j
 public class JwtUtils {
 //
     private static String SECRET_STRING="0Aj+Dv38aiVdI+vQqy3RftfwhGsQPHt+0gGVxV/xu8k=";
@@ -36,10 +33,16 @@ public class JwtUtils {
 
 
     public static Claims parseToken(String token){
+        if(!StringUtils.hasLength(token)) return null;
+
         JwtParser jwtParser=Jwts.parserBuilder().setSigningKey(key).build();
 
-        Claims claims=jwtParser.parseClaimsJws(token).getBody();
+        Claims claims= null;
+        try {
+            claims = jwtParser.parseClaimsJws(token).getBody();
+        } catch (Exception e) {
+            log.info("token解析失败：{}",token);
+        }
         return claims;
     }
-
 }
