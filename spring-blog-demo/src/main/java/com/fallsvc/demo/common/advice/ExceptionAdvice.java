@@ -32,8 +32,8 @@ public class ExceptionAdvice {
     }
     @ExceptionHandler
     public Result exceptionHandler(HandlerMethodValidationException e){
-        String messageSourceResolvable = e.getAllErrors().stream().findFirst().get().getDefaultMessage()
-                ;
+        String messageSourceResolvable = e.getAllErrors()
+                .stream().findFirst().get().getDefaultMessage();
         log.error("发生异常，e:{}",e.getMessage());
         return Result.fail(messageSourceResolvable);
     }
