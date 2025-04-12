@@ -2,6 +2,7 @@ package com.fallsvc.demo.common.utils;
 
 import com.fallsvc.demo.pojo.dataobject.BlogInfo;
 import com.fallsvc.demo.pojo.dataobject.UserInfo;
+import com.fallsvc.demo.pojo.request.UpdateBlogRequest;
 import com.fallsvc.demo.pojo.response.BlogInfoResponse;
 import com.fallsvc.demo.pojo.response.UserInfoResponse;
 import org.springframework.beans.BeanUtils;
@@ -27,5 +28,13 @@ public class BeanTransUtils {
         UserInfoResponse userInfoResponse=new UserInfoResponse();
         BeanUtils.copyProperties(userInfo,userInfoResponse); // userInfo->userInfoResponse
         return userInfoResponse;
+    }
+
+    public static BlogInfo trans(UpdateBlogRequest updateBlogRequest){
+        if(updateBlogRequest==null) return null;
+
+        BlogInfo blogInfo=new BlogInfo();
+        BeanUtils.copyProperties(updateBlogRequest,blogInfo);
+        return blogInfo;
     }
 }

@@ -12,9 +12,9 @@ import lombok.Data;
 @Data
 public class UpdateBlogRequest {
     @NotNull(message = "用户id不能为null")
-    private Integer userId;
-    @NotBlank(message = "标题不能为空")
+    private Integer id;
+
     private String title;
-    @NotBlank(message = "内容不能为空")
+
     private String content;
 }

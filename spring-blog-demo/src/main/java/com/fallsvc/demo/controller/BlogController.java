@@ -1,6 +1,7 @@
 package com.fallsvc.demo.controller;
 
 import com.fallsvc.demo.pojo.request.AddBlogRequest;
+import com.fallsvc.demo.pojo.request.UpdateBlogRequest;
 import com.fallsvc.demo.pojo.response.BlogInfoResponse;
 import com.fallsvc.demo.service.BlogService;
 import jakarta.annotation.Resource;
@@ -47,4 +48,14 @@ public class BlogController {
         return blogService.addBlog(addBlogRequest);
     }
 
+    @RequestMapping("/update")
+    public Boolean updateBlog(@RequestBody @Validated UpdateBlogRequest updateBlogRequest){
+        log.info("更新博客：{}",updateBlogRequest);
+        return blogService.updateBlog(updateBlogRequest);
+    }
+    @RequestMapping("/delete")
+    public Boolean deleteBlog(@NotNull(message = "id不能为空") Integer id){
+        log.info("删除图书id："+id);
+        return blogService.deleteBlog(id);
+    }
 }

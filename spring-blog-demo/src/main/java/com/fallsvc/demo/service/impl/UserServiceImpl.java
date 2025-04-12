@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.fallsvc.demo.common.exception.BlogException;
 import com.fallsvc.demo.common.utils.BeanTransUtils;
 import com.fallsvc.demo.common.utils.JwtUtils;
+import com.fallsvc.demo.common.utils.SecurityUtil;
 import com.fallsvc.demo.mapper.UserInfoMapper;
 import com.fallsvc.demo.pojo.dataobject.BlogInfo;
 import com.fallsvc.demo.pojo.dataobject.UserInfo;
@@ -12,6 +13,7 @@ import com.fallsvc.demo.pojo.response.UserInfoResponse;
 import com.fallsvc.demo.pojo.response.UserLoginResponse;
 import com.fallsvc.demo.service.BlogService;
 import com.fallsvc.demo.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ import java.util.Map;
  * description:
  * @date 2025/3/30  22:28
  */
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -39,7 +42,12 @@ public class UserServiceImpl implements UserService {
         UserInfo userInfo=userInfoMapper.selectOne(queryWrapper);
         if(userInfo==null) throw new BlogException("用户名不存在");
 
-        if(!userInfo.getPassword().equals(userLoginRequest.getPassword())){
+//        if(!userInfo.getPassword().equals(userLoginRequest.getPassword())){
+//            throw new BlogException("密码错误");
+//        }
+        // MD5检测
+        if(!SecurityUtil.verify(userLoginRequest.getPassword(),userInfo.getPassword())){
+            log.info(userLoginRequest.getPassword()+" "+userInfo.getPassword());
             throw new BlogException("密码错误");
         }
         // 登录成功

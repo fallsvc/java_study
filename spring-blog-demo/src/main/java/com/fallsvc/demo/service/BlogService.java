@@ -2,6 +2,7 @@ package com.fallsvc.demo.service;
 
 import com.fallsvc.demo.pojo.dataobject.BlogInfo;
 import com.fallsvc.demo.pojo.request.AddBlogRequest;
+import com.fallsvc.demo.pojo.request.UpdateBlogRequest;
 import com.fallsvc.demo.pojo.response.BlogInfoResponse;
 
 import java.util.List;
@@ -19,4 +20,8 @@ public interface BlogService {
     BlogInfo getBlogInfoByBlogId(Integer blogId);
 
     Boolean addBlog(AddBlogRequest addBlogRequest);
+
+    Boolean updateBlog(UpdateBlogRequest updateBlogRequest);
+
+    Boolean deleteBlog(Integer id);
 }

@@ -45,8 +45,7 @@
                 <div class="detail" id="detail" style="background: transparent;">
                 </div>
                 <div class="operating">
-                    <button onclick="window.location.href='blog_update.html'">编辑</button>
-                    <button onclick="deleteBlog()">删除</button>
+
                 </div>
             </div>
 
@@ -78,8 +77,20 @@
                         editormd.markdownToHTML("detail",{
                             markdown: result.data.content
                         });
+
+                        // 显示 
+                        let loginUserId=localStorage.getItem("loginUserId");
+                        if(result.data.userId==loginUserId){
+                            // 当前作者是登录作者
+                            let blogId=result.data.id;
+                            let finalHtml='<button onclick="window.location.href=\'blog_update.html?blogId='+blogId+'\'">编辑</button>';
+                            finalHtml+='<button onclick="deleteBlog('+blogId+')">删除</button>';
+                            $(".content .operating").html(finalHtml);
+
+                        }
                     }
                 }
+
             });
         }
         var url="/user/getAuthorInfo"+location.search;
@@ -88,7 +99,18 @@
         //var userUrl = "/user/getAuthorInfo" + location.search;
         //getUserInfo(userUrl);
 
-        function deleteBlog() {
+        function deleteBlog(blogId) {
+            $.ajax({
+                type: "post",
+                url: "blog/delete?blogId="+blogId,
+                success: function(result){
+                    if(result.code=="SUCCESS"&&result.data==true){
+                        location.href=="blog_list.html";
+                    }else{
+                        // TODO
+                    }
+                }
+            });
             alert("删除博客");
         }
     </script>
