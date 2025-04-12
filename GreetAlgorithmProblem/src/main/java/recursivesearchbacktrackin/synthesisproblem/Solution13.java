@@ -34,17 +34,16 @@ class Solution13 {
         if(grid[i][j]==2){
             if(path==count){
                 pathCount++;
-                
             }
              return;
         }
 
         for(int k=0;k<4;k++){
             int x=dx[k]+i,y=dy[k]+j;
-            if(x>=0&&x<m&&y>=0&&y<n&&visit[x][y]==false&&grid[x][y]>=0){
+            if(x>=0&&x<m&&y>=0&&y<n&&visit[x][y]==false&&grid[x][y]!=-1){
                 visit[x][y]=true;
                 dfs(grid,x,y,path+1);
-                //
+                //回溯
                 visit[x][y]=false;
             }
         }
