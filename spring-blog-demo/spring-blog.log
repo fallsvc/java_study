@@ -138,3 +138,7 @@ com.fallsvc.demo.common.exception.BlogException: 密码错误
 2025-04-13T00:03:08.568+08:00  INFO 32164 --- [spring-blog-demo] [http-nio-8080-exec-9] c.f.d.c.interceptor.LoginInterceptor     : 从Header里面拿到token：eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoibGlzaSIsImlkIjoyfQ.r53pRtAGw4m0nk9Oo_8XjHT76IilxHkXAYLpUf4h9VQ
 2025-04-13T00:03:08.591+08:00  INFO 32164 --- [spring-blog-demo] [http-nio-8080-exec-8] c.f.demo.controller.BlogController       : 获得图书
 2025-04-13T00:03:08.601+08:00  INFO 32164 --- [spring-blog-demo] [http-nio-8080-exec-9] c.f.demo.controller.UserController       : 获得用户信息，userId：2
+2025-04-13T00:05:46.245+08:00  INFO 32164 --- [spring-blog-demo] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-13T00:05:46.298+08:00  INFO 32164 --- [spring-blog-demo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-13T00:05:46.299+08:00  INFO 32164 --- [spring-blog-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-13T00:05:46.307+08:00  INFO 32164 --- [spring-blog-demo] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
