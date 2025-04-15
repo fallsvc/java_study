@@ -66,4 +66,62 @@ public class Demo1 {
             return dp[m-1][n-1];
         }
     }
+
+//    https://leetcode.cn/problems/wildcard-matching/
+//    字符匹配
+    public boolean isMatch(String ss, String pp) {
+        ss=" "+ss;
+        pp=" "+pp;
+        int m=ss.length();
+        int n=pp.length();
+        char[] s=ss.toCharArray();
+        char[] p=pp.toCharArray();
+        boolean[][] dp=new boolean[m][n];
+        dp[0][0]=true;
+        // 初始化
+        for(int j=1;j<n;j++){
+            if(p[j]=='*') dp[0][j]=true;
+            else break;
+        }
+
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(s[i]==p[j]||p[j]=='?')
+                    dp[i][j]=dp[i-1][j-1];
+                else if(p[j]=='*'){
+                    dp[i][j]= dp[i][j-1]||dp[i-1][j];
+                }
+            }
+        }
+
+        return dp[m-1][n-1];
+    }
+//    https://leetcode.cn/problems/regular-expression-matching/description/
+    // 正则表达式匹配
+    public boolean isMatch1(String ss, String pp) {
+        ss=" "+ss;
+        pp=" "+pp;
+        char[] s=ss.toCharArray();
+        char[] p=pp.toCharArray();
+        int m=s.length;
+        int n=p.length;
+
+        boolean[][] dp=new boolean[m][n];
+        dp[0][0]=true;
+
+        for(int j=2;j<n;j+=2){
+            if(p[j]=='*') dp[0][j]=true;
+            else break;
+        }
+
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                if(p[j]=='*')
+                    dp[i][j]=dp[i][j-2]||(p[j-1]=='.'||p[j-1]==s[i])&&dp[i-1][j];
+                else
+                    dp[i][j]=(p[j]==s[i]||p[j]=='.')&&dp[i-1][j-1];
+            }
+        }
+        return dp[m-1][n-1];
+    }
 }

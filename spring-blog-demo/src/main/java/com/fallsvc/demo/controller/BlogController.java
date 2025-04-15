@@ -54,8 +54,8 @@ public class BlogController {
         return blogService.updateBlog(updateBlogRequest);
     }
     @RequestMapping("/delete")
-    public Boolean deleteBlog(@NotNull(message = "id不能为空") Integer id){
-        log.info("删除图书id："+id);
-        return blogService.deleteBlog(id);
+    public Boolean deleteBlog(@NotNull(message = "id不能为空") Integer blogId){
+        log.info("删除图书id："+blogId);
+        return blogService.deleteBlog(blogId);
     }
 }
