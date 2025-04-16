@@ -27,7 +27,7 @@ public class ExceptionAdvice {
     }
     @ExceptionHandler
     public Result exceptionHandler(BlogException e){
-        log.error("发生异常，e:",e);
+        log.error("发生异常，e:");
         return Result.fail(e.getMessage());
     }
     @ExceptionHandler
