@@ -13,6 +13,11 @@ import org.springframework.web.context.annotation.SessionScope;
  * description:
  * @date 2025/4/16  19:39
  */
+
+/**
+ * @Bean 的作用域  Bean的作⽤域是指Bean在Spring框架中的某种⾏为模式.
+ * 6个 singleton prototype request session application websocket
+ */
 @Component
 public class Config {
     /**

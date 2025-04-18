@@ -7,7 +7,7 @@ import java.util.Random;
  * description:
  * @date 2025/4/15  17:37
  */
-public class quicksort {
+public class QuickSort {
     class Solution1 {
 //        /
         // https://leetcode.cn/problems/sort-colors/
