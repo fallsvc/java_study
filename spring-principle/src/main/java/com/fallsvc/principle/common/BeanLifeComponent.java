@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * description:
  * @date 2025/4/16  21:20
  */
-@Component
+//@Component
 public class BeanLifeComponent implements BeanNameAware {
     // DI 依赖注入分三种 属性、构造方法、setter 方法
     private Config config;
