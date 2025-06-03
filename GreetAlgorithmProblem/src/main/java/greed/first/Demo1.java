@@ -1,8 +1,6 @@
 package greed.first;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @auther falls_vc
@@ -38,7 +36,7 @@ public class Demo1 {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
         PriorityQueue<Double> priorityQueue=new PriorityQueue<>();
         priorityQueue.offer(1.0);
         priorityQueue.offer(2.0);
@@ -129,5 +127,55 @@ public class Demo1 {
 
             return count+1;
         }
+    }
+
+    class Solution5 {
+//        https://leetcode.cn/problems/longest-increasing-subsequence/
+//        最长递增子序列      贪心
+        public int lengthOfLIS(int[] nums) {
+            List<Integer> ret = new ArrayList<>();
+            ret.add(nums[0]);
+
+            for (int i = 1; i < nums.length; i++) {
+                int n = ret.size() - 1;
+                if (nums[i] > ret.get(n)) ret.add(nums[i]);// 可以添加到最后面形成递增子序列
+                else { // 找到插入位置
+                    int left = 0, right = n;
+                    while (left < right) {
+                        int mid = (right - left) / 2 + left;
+                        if (nums[i] > ret.get(mid)) {
+                            left = mid + 1;
+                        } else {
+                            right = mid;
+                        }
+                    }
+                    ret.set(left, nums[i]);
+                }
+
+
+            }
+
+            return ret.size();
+        }
+    }
+
+    class Solution6 {
+//        https://leetcode.cn/problems/increasing-triplet-subsequence/description/
+//        递增三元子序列
+        public boolean increasingTriplet(int[] nums) {
+
+            int a=nums[0],b=Integer.MAX_VALUE;
+            for(int i=1;i<nums.length;i++) {
+                if(nums[i]>b) return true;
+                else if(nums[i]>a) b=nums[i];
+                else a=nums[i];
+            }
+
+            return false;
+        }
+    }
+    public static void main(String[] args) {
+        int[] arr={2,1,5,0,4,6};
+
     }
 }

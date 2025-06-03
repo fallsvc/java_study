@@ -271,7 +271,7 @@ public class Demo1 {
 
     }
 
-    public static void main(String[] args) {
+    public static void main3(String[] args) {
         String[] a={"AACCGATT","AACCGATA","AAACGATA","AAACGGTA"};
 //        minMutation("AACCGGTT","AAACGGTA",a);
     }
@@ -281,6 +281,7 @@ public class Demo1 {
         char[] ge={'A','C','G','T'};
         public int minMutation(String startGene, String endGene, String[] bank){
             if(bank.length==0) return -1;// 边界
+
             Queue<String> q=new ArrayDeque<>();
             q.offer(startGene);
             char[] end=endGene.toCharArray();
@@ -323,6 +324,14 @@ public class Demo1 {
 
             }
             return -1;
+        }
+    }
+
+    public static void main(String[] args) {
+        for (char i = 'a'; i <= 'z'; i++) {
+            System.out.println(i);
+            Set<String> set=new HashSet<>();
+//            set.contains();
         }
     }
 }
