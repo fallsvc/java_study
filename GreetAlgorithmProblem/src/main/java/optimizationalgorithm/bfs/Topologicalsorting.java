@@ -139,7 +139,7 @@ public class Topologicalsorting {
 //
 //        }
     }
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         int[][] a=new int[][]{{1,0},{0,1}};
         List<Integer> l=new ArrayList<>();
         l.add(1);
@@ -154,5 +154,76 @@ public class Topologicalsorting {
                 list) {
             
         }
+    }
+
+//    https://leetcode.cn/problems/Jf1JuT/submissions/634506720/
+//    火星单词
+    public static String alienOrder(String[] words) {
+        Map<Character,Set<Character>> edgs=new HashMap<>();
+        Map<Character,Integer> in=new HashMap<>();
+        // 初始化，添加每一个字符 需要找到 入度为0的字符，然后添加到队列中进行拓扑排序的源点
+        for(String x:words) {
+            for(int i=0;i<x.length();i++) {
+                in.put(x.charAt(i),0);
+            }
+        }
+
+        // 添加边
+        int n=words.length;
+        for(int i=0;i<n;i++) {
+            for(int j=i+1;j<n;j++) {
+                for(int k=0;k<words[i].length();k++) {
+                    if(k<words[j].length() && words[i].charAt(k)!=words[j].charAt(k)) {
+                        char a=words[i].charAt(k),b=words[j].charAt(k);
+                        Set<Character> s= edgs.getOrDefault(a,new HashSet<Character>());
+                        if(!s.contains(b)) {
+                            s.add(b);
+                            edgs.put(a,s);
+                            in.put(b,in.get(b)+1);
+                        }
+                        break;
+                    }
+                    // 前缀相同，但是长的字符串在前面 则不可能存在合理序列
+                    if(k >= words[j].length()) return "";
+                }
+            }
+        }
+        // 拓扑排序
+        Queue<Character> q=new ArrayDeque<>();
+        StringBuilder s=new StringBuilder();// 返回值
+        // 添加源点
+        for (Character ch: in.keySet()) {
+            if(in.get(ch) ==0) {
+                q.add(ch);
+            }
+        }
+        // 依次去源点，减相关边，添加新源点
+        while(!q.isEmpty()) {
+            Character ch=q.poll();
+            s.append(ch);
+            for(Character x: edgs.getOrDefault(ch,new HashSet<>())) {
+                Integer num=in.get(x)-1;
+                if(num==0) q.add(x);
+                in.put(x,num);
+            }
+        }
+        // 如果还存在字符没有排序成功，或者成顺序需求环，则不符合题目要求
+        for(Integer x : in.values()) {
+            if(x!=0) return "";
+        }
+        return s.toString(); // 返回值
+    }
+
+    public static void main(String[] args) {
+        String[] s={"wrt","wrf","er","ett","rftt"};
+        System.out.println(alienOrder(s));
+//        Set<Character> s=new HashSet<>();
+//        s.add('c');
+//        s.add('a');
+//        s.add('b');
+//        for (char ch :
+//                s) {
+//            System.out.println(ch);
+//        }
     }
 }
